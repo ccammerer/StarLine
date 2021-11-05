@@ -1,2 +1,2 @@
-# StarLine-GitHub
- Lo de GitHub
+# StarLine
+ Info-app about cosmic objects
