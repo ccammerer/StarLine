@@ -84,41 +84,42 @@ float infoRectY = bigImgY-margin/2;
 
 
 String[][] info = { {"Titol 1", "Dada 1" }, {"Titol 1", "Dada 1" },
-                    {"Titol 2", "Dada 2" }, {"Titol 2", "Dada 2" },
-                    {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
-                    {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
-                    {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
-                    {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
-                  };
+  {"Titol 2", "Dada 2" }, {"Titol 2", "Dada 2" },
+  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
+  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
+  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
+  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
+};
 TableLabel t;
 
 Button1 next, prev;
 int numCardsPage = 4;
 PagedCard pc;
+int selectedCard = -1;
 String[][] infoCards = {
-                     {"Títol 1", "Lloc 1", "Data 1", "Secció 1", "Descripció 1"},
-                     {"Títol 2", "Lloc 2", "Data 2", "Secció 2", "Descripció 2"},
-                     {"Títol 3", "Lloc 3", "Data 3", "Secció 1", "Descripció 3"},
-                     {"Títol 4", "Lloc 4", "Data 4", "Secció 1", "Descripció 4"},
-                     {"Títol 5", "Lloc 5", "Data 5", "Secció 2", "Descripció 5"},
-                     {"Títol 6", "Lloc 6", "Data 6", "Secció 2", "Descripció 6"},
-                     {"Títol 7", "Lloc 7", "Data 7", "Secció 1", "Descripció 7"},
-                     {"Títol 8", "Lloc 1", "Data 1", "Secció 1", "Descripció 1"},
-                     {"Títol 9", "Lloc 2", "Data 2", "Secció 2", "Descripció 2"},
-                     {"Títol 10", "Lloc 3", "Data 3", "Secció 1", "Descripció 3"},
-                     {"Títol 11", "Lloc 4", "Data 4", "Secció 1", "Descripció 4"},
-                     {"Títol 12", "Lloc 5", "Data 5", "Secció 2", "Descripció 5"},
-                     {"Títol 13", "Lloc 6", "Data 6", "Secció 2", "Descripció 6"},
-                     {"Títol 14", "Lloc 7", "Data 7", "Secció 1", "Descripció 7"},
-                  };
-                  
+  {"Títol 1", "Lloc 1", "Data 1", "Secció 1", "Descripció 1"},
+  {"Títol 2", "Lloc 2", "Data 2", "Secció 2", "Descripció 2"},
+  {"Títol 3", "Lloc 3", "Data 3", "Secció 1", "Descripció 3"},
+  {"Títol 4", "Lloc 4", "Data 4", "Secció 1", "Descripció 4"},
+  {"Títol 5", "Lloc 5", "Data 5", "Secció 2", "Descripció 5"},
+  {"Títol 6", "Lloc 6", "Data 6", "Secció 2", "Descripció 6"},
+  {"Títol 7", "Lloc 7", "Data 7", "Secció 1", "Descripció 7"},
+  {"Títol 8", "Lloc 1", "Data 1", "Secció 1", "Descripció 1"},
+  {"Títol 9", "Lloc 2", "Data 2", "Secció 2", "Descripció 2"},
+  {"Títol 10", "Lloc 3", "Data 3", "Secció 1", "Descripció 3"},
+  {"Títol 11", "Lloc 4", "Data 4", "Secció 1", "Descripció 4"},
+  {"Títol 12", "Lloc 5", "Data 5", "Secció 2", "Descripció 5"},
+  {"Títol 13", "Lloc 6", "Data 6", "Secció 2", "Descripció 6"},
+  {"Títol 14", "Lloc 7", "Data 7", "Secció 1", "Descripció 7"},
+};
+
 Button1 search;         // Botons
 TextList tList;   // Llista de textos
 
-String[][] listValues = {{"0", "Alemania"},{"1", "Angola"},{"2", "Canada"},
-                         {"3", "Brasil"}};
-                         
-String selectedText; 
+String[][] listValues = {{"0", "Alemania"}, {"1", "Angola"}, {"2", "Canada"},
+  {"3", "Brasil"}};
+
+String selectedText;
 
 // Dimensions del TextList i Botons
 float tListW = 600, tListH = 60;
@@ -126,9 +127,9 @@ float tListW = 600, tListH = 60;
 
 PImage img;
 /*PImage jupiter;
-PImage earth;
-PImage saturn;
-PImage mars;*/
+ PImage earth;
+ PImage saturn;
+ PImage mars;*/
 
 PImage[] sS;
 PImage[] con;

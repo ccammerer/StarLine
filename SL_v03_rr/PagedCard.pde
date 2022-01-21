@@ -8,9 +8,9 @@ class PagedCard {
 
   int numPage;
   int numTotalPages;
+  
 
   float x, y, w, h;
-  int selectedCard = -1;
 
   // Constructor
   PagedCard(int ncp) {
@@ -86,7 +86,7 @@ class PagedCard {
     int lastCardPage  = numCardsPage*(numPage+1) - 1;
     for (int i = firstCardPage; i <= lastCardPage; i++) {
       if (i<cards.length && cards[i]!=null) {
-        cards[i].display(i==this.selectedCard);
+        cards[i].display(i==selectedCard);
       }
     }
 
@@ -105,7 +105,7 @@ class PagedCard {
     for (int i = firstCardPage; i <= lastCardPage; i++) {
       if (i<cards.length && cards[i]!=null && cards[i].mouseOver()) {
         selectedCard = i;
-        println("Selected Card: "+i);
+        println("Selected Card: "+(i+1));
         selected = true;
         break;
       }
@@ -116,7 +116,6 @@ class PagedCard {
   }
   
   boolean checkMouseOver(){
-    
     int firstCardPage = numCardsPage*numPage;
     int lastCardPage  = numCardsPage*(numPage+1) - 1;
     for (int i = firstCardPage; i <= lastCardPage; i++) {
