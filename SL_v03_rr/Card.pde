@@ -51,13 +51,13 @@ class Card {
    // Rectangle inferior
    stroke(0);
    if(selectedCard){
-       fill(200, 100, 100);
+       fill(go);
    }
    else if(this.mouseOver()){
-       fill(200);
+       fill(go);
    }
    else {
-       fill(220);
+       fill(g);
    }
    rect(x, y, w, h, b/2);
    
@@ -85,9 +85,7 @@ class Card {
    fill(0); textSize(18); textAlign(CENTER);
    text(section, x + 2*w/3 + w/6, y + 2*h/5);
    
-   // Descripció
-   fill(0);textSize(14); textAlign(LEFT);
-   text(description, x + w/3 + b, y + 2*h/3 - b, 2*w/3 - b*2, h/4);
+   
    
    
    popStyle();

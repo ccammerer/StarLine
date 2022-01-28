@@ -17,9 +17,9 @@ void drawFyH() {
 void drawBanner() {
   pushStyle();
   fill(131, 181, 209);
-  rect(logoX, logoY, logoSize, logoSize, roundness);
+  image(logo, logoX, 15, logoSize, logoSize);
   textSize(90);
-  fill(232, 237, 238);
+  fill(b);
   text("StarLine", bannerX, bannerY);
   popStyle();
 }
@@ -40,7 +40,7 @@ void drawUbi() {
 
 void drawCont() {
   pushStyle();
-  bCONT.display(b, bo);
+  bCONT.display(g, go);
   /*rect(continueX, continueY, continueSizeX, continueSizeY, roundness);
    fill(232, 237, 238);
    textSize(26);
@@ -49,7 +49,7 @@ void drawCont() {
 }
 void drawBack() {
   pushStyle();
-  bBACK.display(b, bo);
+  bBACK.display(g, go);
   /*rect(backX, backY, backSizeX, backSizeY, roundness);
    fill(232, 237, 238);
    textSize(26);
@@ -85,10 +85,9 @@ void drawObjectList() {
    rect(imgRectObjectsX, imgRectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, imgRectObjectsSize, imgRectObjectsSize, roundness);*/
 
   pc.display();
-  pc.printSelectedCard();
 
   // Dibuixa els botons
-  next.display(b, bo);
+  next.display(g, go);
   prev.display(p, po);
 }
 
@@ -111,7 +110,7 @@ void drawInfo() {
 
   fill(p);
   rect(bigImgX, bigImgY-margin/2, bigImgSizeX, bigImgSizeY, roundness);
-  fill(b);
+  fill(g);
   /*fill(131, 181, 209);
    rect(infoRectX, infoRectY, infoRectSizeX, infoRectSizeY, roundness);
    fill(114, 110, 151);
@@ -150,21 +149,21 @@ void drawObjectListInfo() {
   fill(p);
   rect(searchBarLX, searchBarY, searchBarSizeLX, searchBarSizeY, roundness);
 
-  fill(b);
+  fill(g);
   rect(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY, roundness);
   fill(p);
   rect(imgRectObjectsLX, imgRectObjectsY, imgRectObjectsSize, imgRectObjectsSize, roundness);
   fill(p);
   rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY + margin/4, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-  fill(b);
+  fill(g);
   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY + margin/4, imgRectObjectsSize, imgRectObjectsSize, roundness);
-  fill(b);
+  fill(g);
   rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, rectObjectsSizeLX, rectObjectsSizeY, roundness);
   fill(p);
   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, imgRectObjectsSize, imgRectObjectsSize, roundness);
   fill(p);
   rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-  fill(b);
+  fill(g);
   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, imgRectObjectsSize, imgRectObjectsSize, roundness);
 
 

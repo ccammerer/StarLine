@@ -11,12 +11,12 @@ void setup() {
   size(1600, 1100);
   textAlign(CENTER);
   textSize(18);
-  noStroke();
+  strokeWeight(3);
   setGUI();
 }
 
 void draw() {
-  background(17, 11, 50);
+  background(g);
 
   /*if (numPantalla==1) {
    drawPantalla01();

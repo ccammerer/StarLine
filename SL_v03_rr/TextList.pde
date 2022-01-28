@@ -34,7 +34,7 @@ class TextList {
     textField.display();
 
     for(Button1 search: buttons){
-      search.display(b,bo);
+      search.display(g,go);
     }
     popStyle();
   }

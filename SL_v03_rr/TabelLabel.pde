@@ -19,7 +19,7 @@ class TableLabel {
       int px = x + ((i%2==0)? 0 : int(w/2 + margin/4));
       int py = y + (i/2)* int((h/6 + margin/4));
       if (i%2==0) {
-        fill(b);
+        fill(g);
       } else {
         fill(p);
       }

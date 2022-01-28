@@ -45,8 +45,7 @@ class Button1 {
     rect(this.x, this.y, this.w, this.h, 10);    // Rectangle del botó
 
     // Text (color, alineació i mida)
-    fill(232, 237, 238);
-    ;
+    fill(b);
     textAlign(CENTER);
     textSize(20);
     text(textBoto, this.x + this.w/2, this.y + this.h/2 + 10);
@@ -59,15 +58,13 @@ class Button1 {
       (mouseY>= this.y) &&
       (mouseY<= this.y + this.h);
   }
-  
-  void updateCursor(){
-  
-  if(mouseOverButton()){
+
+  void updateCursor() {
+
+    if (mouseOverButton()) {
       cursor(HAND);
+    } else {
+      cursor(ARROW);
+    }
   }
-  else {
-     cursor(ARROW);
-  }
-  
-}
 }

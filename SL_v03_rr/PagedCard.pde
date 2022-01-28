@@ -47,8 +47,8 @@ class PagedCard {
       for (int i = firstCardPage; i <= lastCardPage; i++) {
         if (i<cards.length) {
           cards[i] = new Card(cardsData[i]);
-          cards[i].setDimensions(x, yCard, w, hCard, b);
-          yCard += hCard + b;
+          cards[i].setDimensions(x, yCard, rectObjectsSizeX, rectObjectsSizeY, roundness*1.75);
+          yCard += hCard - margin/2;
         }
       }
     }
@@ -91,7 +91,7 @@ class PagedCard {
     }
 
     // Informació de la Pàgina
-    fill(0);
+    fill(b);
     text("Pag: "+(this.numPage+1)+" / "+(this.numTotalPages+1), x + w + 50, y+10);
 
     popStyle();
@@ -113,6 +113,7 @@ class PagedCard {
     if(!selected){
       selectedCard = -1;
     }
+    println(selectedCard);
   }
   
   boolean checkMouseOver(){
@@ -126,13 +127,5 @@ class PagedCard {
     return false;
   }
   
-  void printSelectedCard(){
-    if(selectedCard !=-1){
-      Card cSelected = cards[selectedCard];
-      fill(0); textSize(18);
-      text("Seleccionada: ", 900, 300);
-      textSize(24);
-      text(cSelected.title, 900, 340);
-    }
-  }
+  
 }

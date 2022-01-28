@@ -3,18 +3,19 @@ float height = 1100;
 float roundness = 12;
 float margin = width/40;
 
-color w = color(232, 237, 238);
-color bo = color(131, 181, 209);
-color p = color(114, 110, 151);
-color b = color(70, 144, 186);
-color po = color(180, 171, 227);
+color b = color(2, 4, 2);
+color go = color(130, 140, 150);
+color p = color(143, 129, 213);
+color g = color(190, 200, 210);
+color po = color(105, 87, 199);
+color blau = color(130, 180, 210);
 
 
-float logoSize = 100;
-float logoX = 910;
-float logoY = margin*2.5;
 float bannerX = 750;
-float bannerY = 190;
+float bannerY = 100;
+float logoSize = 100;
+float logoX = bannerX +160;
+float logoY = bannerY;
 
 
 float ubiActualSizeX = width/5.5;
@@ -48,7 +49,7 @@ float configY = height-margin*4.5+configSize;
 float searchBarSizeX = width/2.5;
 float searchBarSizeY = height/28;
 float searchBarX = (width/2)-(searchBarSizeX/2);
-float searchBarY = ubiActualY-margin/2;
+float searchBarY = ubiActualY-margin;
 
 float rectObjectsSizeX = searchBarSizeX;
 float rectObjectsSizeY = height/10;
@@ -123,16 +124,3 @@ String selectedText;
 
 // Dimensions del TextList i Botons
 float tListW = 600, tListH = 60;
-
-
-PImage img;
-/*PImage jupiter;
- PImage earth;
- PImage saturn;
- PImage mars;*/
-
-PImage[] sS;
-PImage[] con;
-PImage[] es;
-PImage[] sA;
-PImage[] cP;

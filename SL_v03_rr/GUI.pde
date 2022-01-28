@@ -49,7 +49,7 @@ pc.setDimensions(rectObjectsX, rectObjectsY, rectObjectsSizeX, rectObjectsSizeY*
   
   
   // Creació dels botons
-  next = new Button1("NEXT", margin + rectObjectsSizeX, margin*1.25, backSizeX, backSizeY);
+  next = new Button1("NEXT", rectObjectsX, rectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, backSizeX, backSizeY);
   prev = new Button1("PREV", margin + rectObjectsSizeX, margin*1.5 + backSizeY, backSizeX, backSizeY);
   
 }
@@ -65,6 +65,10 @@ void initPics(){
   sS = new PImage[8];
   for(int i = 0; i>= 8; i++){
   sS[i] = loadImage("ss/ss_"+ i + ".png");
-  
   }
+  logo = loadImage("logo_r.png");
+}
+
+void initFonts(){
+
 }
