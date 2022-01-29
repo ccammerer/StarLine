@@ -32,7 +32,7 @@ class Button1 {
   void display(color base, color over) {
     this.base = base;
     this.over = over;
-
+    updateCursor();
     if (!enabled) {
       fill(fillColorDisabled);  // Color desabilitat
     } else if (mouseOverButton()) {
@@ -42,12 +42,12 @@ class Button1 {
     }
     stroke(strokeColor);
     strokeWeight(2);        //Color i gruixa del contorn
-    rect(this.x, this.y, this.w, this.h, 10);    // Rectangle del botó
+    rect(this.x, this.y, this.w, this.h, 6);    // Rectangle del botó
 
     // Text (color, alineació i mida)
-    fill(b);
+    fill(n);
     textAlign(CENTER);
-    textSize(20);
+    textSize(24);
     text(textBoto, this.x + this.w/2, this.y + this.h/2 + 10);
   }
 
@@ -60,11 +60,10 @@ class Button1 {
   }
 
   void updateCursor() {
-
     if (mouseOverButton()) {
-      cursor(HAND);
+      cursorHand = true;
     } else {
-      cursor(ARROW);
+      cursorHand = false;
     }
   }
 }

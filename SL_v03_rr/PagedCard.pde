@@ -8,8 +8,9 @@ class PagedCard {
 
   int numPage;
   int numTotalPages;
-  
 
+  
+  float hCard;
   float x, y, w, h;
 
   // Constructor
@@ -40,15 +41,14 @@ class PagedCard {
       
       int firstCardPage = numCardsPage*np;
       int lastCardPage  = numCardsPage*(np+1) - 1;
-      float hCard = h / (float) numCardsPage;
+      hCard = h / (float) numCardsPage;
       float yCard = y;
-      float b = 10;
 
       for (int i = firstCardPage; i <= lastCardPage; i++) {
         if (i<cards.length) {
           cards[i] = new Card(cardsData[i]);
-          cards[i].setDimensions(x, yCard, rectObjectsSizeX, rectObjectsSizeY, roundness*1.75);
-          yCard += hCard - margin/2;
+          cards[i].setDimensions(x, yCard, w, hCard, roundness*1.75);
+          yCard += hCard +margin/4;
         }
       }
     }
@@ -57,9 +57,9 @@ class PagedCard {
  void setImages(PImage[] sS, PImage[] con) {
     for (int i=0; i<cards.length; i++) {
       if (cards[i].section=="Secció 1") {
-        img = sS[i];
+        img = sS[i%8];
       } else {
-        img = con[i+1];
+        img = sS[i%8];
       }
       cards[i].setImage(img);
     }
@@ -79,27 +79,27 @@ class PagedCard {
 
   // Dibuixa taula
   void display() {
+    checkMouseOver();
     pushStyle();
-
     // Dibuixa Cards corresponent a la Pàgina
     int firstCardPage = numCardsPage*numPage;
     int lastCardPage  = numCardsPage*(numPage+1) - 1;
+    int nc = 0;
     for (int i = firstCardPage; i <= lastCardPage; i++) {
       if (i<cards.length && cards[i]!=null) {
         cards[i].display(i==selectedCard);
+        nc++;
       }
     }
 
     // Informació de la Pàgina
-    fill(b);
-    text("Pag: "+(this.numPage+1)+" / "+(this.numTotalPages+1), x + w + 50, y+10);
-
+    fill(n);
+    textSize(18);
+    text("Pag:"+(this.numPage+1)+"/"+(this.numTotalPages+1), x +margin+margin/2.2, y + hCard *nc + (margin/4)*7);
     popStyle();
   }
   
   void checkCardSelection(){
-    
-    boolean selected = false;
     int firstCardPage = numCardsPage*numPage;
     int lastCardPage  = numCardsPage*(numPage+1) - 1;
     for (int i = firstCardPage; i <= lastCardPage; i++) {
@@ -112,6 +112,11 @@ class PagedCard {
     }
     if(!selected){
       selectedCard = -1;
+    }
+    if (checkMouseOver()){
+      mouseOverCards = true;
+    }else {
+    mouseOverCards = false;
     }
     println(selectedCard);
   }

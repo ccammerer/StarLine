@@ -1,5 +1,4 @@
 void drawPantallaUBI(){
-  enableButtons();
   drawBanner();
   drawUbi();
   drawCont();
@@ -7,7 +6,6 @@ void drawPantallaUBI(){
 }
 
 void drawPantallaFYH(){
-  enableButtons();
   drawBanner();
   drawFyH();
   drawCont();
@@ -16,7 +14,6 @@ void drawPantallaFYH(){
 }
 
 void drawPantallaHOME(){
-  enableButtons();
   drawBanner();
   drawObjectList();
   drawObjectsBottom();
@@ -26,7 +23,6 @@ void drawPantallaHOME(){
 }
 
 void drawPantallaINFO(){
-  enableButtons();
   drawBanner();
   drawInfo();
   drawObjectListInfo();
@@ -36,7 +32,6 @@ void drawPantallaINFO(){
 }
 
 void drawPantallaCONFIG(){
-  enableButtons();
   drawBanner();
   drawBack();
 }

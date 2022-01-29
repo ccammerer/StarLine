@@ -4,11 +4,13 @@ int buttonH = 100, buttonW = 300;
 
 // Creació dels elements de la GUI
 void setGUI() {
+  initPics();
+  initFonts();
   initButtons();
   initLabels();
   initCards();
   initSearch();
-  initPics();
+  updateCursor();
 }
 
 // Creació dels botons de la GUI
@@ -21,54 +23,51 @@ void initButtons() {
   bFYH      = new Button1("Fecha y hora del sistema", ubiActualX, ubiActualY, ubiActualSizeX, ubiActualSizeY);
 }
 
-void enableButtons() {
-  bUBIactual.setEnabled(true);
-  bCONT.setEnabled(true);
-  bCONFIG.setEnabled(true);
-  bBACK.setEnabled(true);
-  bUBI.setEnabled(true);
-  bFYH.setEnabled(true);
-}
 
 void initLabels() {
   t = new TableLabel(12);
   t.setLabelsInfo(info);
 }
 
-void initCards(){
-pc = new PagedCard(numCardsPage);
-pc.setDimensions(rectObjectsX, rectObjectsY, rectObjectsSizeX, rectObjectsSizeY*5);
-
-
-
+void initCards() {
+  pc = new PagedCard(numCardsPage);
+  pc.setDimensions(rectObjectsX, rectObjectsY, rectObjectsSizeX, rectObjectsSizeY*5);
   pc.setData(infoCards);
   pc.setCards();
+  pc.setImages(sS, con);
   
+  next = new Button1("NEXT", (rectObjectsX+backSizeX+margin/4)+rectObjectsSizeX-backSizeX*2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX, backSizeY);
+  prev = new Button1("PREV", (rectObjectsX)+rectObjectsSizeX-backSizeX*2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX, backSizeY);
   
-  //img = loadImage("data/images/jupiter16b.png");
-  
-  
-  // Creació dels botons
-  next = new Button1("NEXT", rectObjectsX, rectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, backSizeX, backSizeY);
-  prev = new Button1("PREV", margin + rectObjectsSizeX, margin*1.5 + backSizeY, backSizeX, backSizeY);
-  
+  pcMini = new PagedCard(numCardsPage);
+  pcMini.setDimensions(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY*5);
+  pcMini.setData(infoCards);
+  pcMini.setCards();
+  pcMini.setImages(sS, con);
+
+  nextMini = new Button1("NEXT", (rectObjectsLX+backSizeX+margin/4+rectObjectsSizeX-backSizeX*2-margin/4), rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX/2-margin/8, backSizeY);
+  prevMini = new Button1("PREV", (rectObjectsLX+backSizeX+margin/4+rectObjectsSizeX-backSizeX*2-margin/4)-backSizeX/2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX/2-margin/8, backSizeY);
 }
 
-void initSearch(){
-tList = new TextList(listValues, width/8, height/12, tListW, tListH);
-   
-  // Creació del Botó
-  search = new Button1("TRIA", 3*width/4, height/12, buttonW, buttonH);
+void initSearch() {
+  tList = new TextList(infoCards, searchBarX, searchBarY, searchBarSizeX - backSizeX - margin/4 , searchBarSizeY);
+  search = new Button1("TRIA", searchBarX + searchBarSizeX - backSizeX , searchBarY, backSizeX, backSizeY);
+  
+  tListMini = new TextList(infoCards, searchBarLX, searchBarY, searchBarSizeLX, searchBarSizeY);
+  searchMini = new Button1("TRIA", searchBarX + searchBarSizeX - backSizeX , searchBarY, backSizeX, backSizeY);
 }
 
-void initPics(){
+void initPics() {
   sS = new PImage[8];
-  for(int i = 0; i>= 8; i++){
-  sS[i] = loadImage("ss/ss_"+ i + ".png");
+  println("hola");
+  for (int i = 0; i< sS.length; i++) {
+    sS[i] = loadImage("ss/ss_"+ i + ".png");
   }
-  logo = loadImage("logo_r.png");
+  println("hola");
+  logo = loadImage("logo_br.png");
 }
 
-void initFonts(){
-
+void initFonts() {
+  banner = createFont("banner.TTF", 100);
+  general = createFont("text.ttf", 100);
 }

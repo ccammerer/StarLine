@@ -1,6 +1,5 @@
 //int numPantalla = 2;
 
-
 enum PANTALLA {
   UBI, FYH, HOME, INFO, CONFIG
 };
@@ -9,24 +8,16 @@ PANTALLA pantalla = PANTALLA.HOME;
 
 void setup() {
   size(1600, 1100);
+  frameRate(20);
   textAlign(CENTER);
   textSize(18);
   strokeWeight(3);
   setGUI();
+  textFont(general);
 }
 
 void draw() {
   background(g);
-
-  /*if (numPantalla==1) {
-   drawPantalla01();
-   } else if (numPantalla == 2) {
-   drawPantalla02();
-   } else if (numPantalla == 3) {
-   drawPantalla03();
-   } else if (numPantalla == 4) {
-   drawPantalla04();
-   }*/
 
   switch(pantalla) {
   case UBI:
@@ -44,16 +35,14 @@ void draw() {
   case CONFIG:
     drawPantallaCONFIG();
     break;
+    
   }
-
-
+  updateCursor();
   pushStyle();
   fill(255);
-  textSize(36);
+  textSize(18);
   textAlign(RIGHT);
   text("PANTALLA ", width-50, 60);
   text("X: "+mouseX+", Y:"+mouseY, width-50, 100);
   popStyle();
-  
-
 }

@@ -8,15 +8,13 @@ class Label {
   }
 
   void display(int x, int y, int w, int h) {
-      
-      noStroke();
       rect(x, y, w, h, roundness);
-      
       pushStyle();
-      fill(b);
+      fill(n);
       textSize(24);
-      text(this.info1, x + margin*1.1, y + margin*0.75);
-      text(this.info2, x + margin*1.1, y + margin*1.75);
+      textMode(RIGHT);
+      text(this.info1, x + margin*1.75, y + margin*0.7);
+      text(this.info2, x + margin*1.75, y + margin*1.7);
       popStyle();
     }
   }

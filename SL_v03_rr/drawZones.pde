@@ -16,11 +16,11 @@ void drawFyH() {
 
 void drawBanner() {
   pushStyle();
-  fill(131, 181, 209);
-  image(logo, logoX, 15, logoSize, logoSize);
-  textSize(90);
-  fill(b);
-  text("StarLine", bannerX, bannerY);
+  textFont(banner);
+  image(logo, logoX, 15+40, logoSize, logoSize);
+  textSize(85);
+  fill(n);
+  text("StarLine", bannerX, bannerY+40);
   popStyle();
 }
 
@@ -33,66 +33,44 @@ void drawUbi() {
    fill(232, 237, 238);
      /*textSize(26);
    text("Ubicación actual", width/2, ubiActualY + ubiActualSizeY/1.333);
-   fill(131, 181, 209);
-   rect(ubiScrollX, ubiScrollY, ubiScrollSizeX, ubiScrollSizeY, roundness);*/
+   */fill(g);
+   rect(ubiScrollX, ubiScrollY, ubiScrollSizeX, ubiScrollSizeY, roundness);
   popStyle();
 }
 
 void drawCont() {
   pushStyle();
   bCONT.display(g, go);
-  /*rect(continueX, continueY, continueSizeX, continueSizeY, roundness);
-   fill(232, 237, 238);
-   textSize(26);
-   text("Continuar", continueX + continueSizeX/2, continueY + continueSizeY/1.333);*/
   popStyle();
 }
 void drawBack() {
   pushStyle();
   bBACK.display(g, go);
-  /*rect(backX, backY, backSizeX, backSizeY, roundness);
-   fill(232, 237, 238);
-   textSize(26);
-   text("Atrás", backX + backSizeX/2, backY + backSizeY/1.333);*/
   popStyle();
 }
 
 void configButt() {
-  /*fill(114, 110, 151);
-   rect(configX, configY, configSize, configSize, roundness);*/
   bCONFIG.display(p, po);
 }
 
 void drawObjectList() {
-  fill(114, 110, 151);
-  rect(searchBarX, searchBarY, searchBarSizeX, searchBarSizeY, roundness);
-
-  /*fill(131, 181, 209);
-   rect(rectObjectsX, rectObjectsY, rectObjectsSizeX, rectObjectsSizeY, roundness);
-   fill(114, 110, 151);
-   rect(imgRectObjectsX, imgRectObjectsY, imgRectObjectsSize, imgRectObjectsSize, roundness);
-   fill(114, 110, 151);
-   rect(rectObjectsX, rectObjectsY + rectObjectsSizeY + margin/4, rectObjectsSizeX, rectObjectsSizeY, roundness);
-   fill(131, 181, 209);
-   rect(imgRectObjectsX, imgRectObjectsY + rectObjectsSizeY + margin/4, imgRectObjectsSize, imgRectObjectsSize, roundness);
-   fill(131, 181, 209);
-   rect(rectObjectsX, rectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, rectObjectsSizeX, rectObjectsSizeY, roundness);
-   fill(114, 110, 151);
-   rect(imgRectObjectsX, imgRectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, imgRectObjectsSize, imgRectObjectsSize, roundness);
-   fill(114, 110, 151);
-   rect(rectObjectsX, rectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, rectObjectsSizeX, rectObjectsSizeY, roundness);
-   fill(131, 181, 209);
-   rect(imgRectObjectsX, imgRectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, imgRectObjectsSize, imgRectObjectsSize, roundness);*/
-
+  
+  fill(p);
+  tList.display();
+  search.display(p,po);
+  if(selectedText!=null){
+    pushStyle();
+    textAlign(RIGHT); fill(n);
+    text(selectedText, width/2, height/2);
+    popStyle();
+  }
   pc.display();
-
-  // Dibuixa els botons
   next.display(g, go);
   prev.display(p, po);
 }
 
 void drawObjectsBottom() {
-  fill(131, 181, 209);
+  fill(p);
   rect(objectsBottomX, objectsBottomY, logoSize, logoSize, roundness);
   rect(objectsBottomX + logoSize*2, objectsBottomY, logoSize, logoSize, roundness);
   rect(objectsBottomX + logoSize*4, objectsBottomY, logoSize, logoSize, roundness);
@@ -101,7 +79,7 @@ void drawObjectsBottom() {
 }
 
 void drawBlackboards() {
-  fill(131, 181, 209);
+  fill(p);
   rect(blackboardX, blackboardY, blackboardSizeX, blackboardSizeY, roundness);
   rect(width-blackboardX-blackboardSizeX, blackboardY, blackboardSizeX, blackboardSizeY, roundness);
 }
@@ -146,9 +124,13 @@ void drawInfo() {
 
 void drawObjectListInfo() {
   pushStyle();
-  fill(p);
-  rect(searchBarLX, searchBarY, searchBarSizeLX, searchBarSizeY, roundness);
-
+  tListMini.display();
+  searchMini.display(p,po);
+  //rect(searchBarLX, searchBarY, searchBarSizeLX, searchBarSizeY, roundness);
+  pcMini.display();
+  nextMini.display(g, go);
+  prevMini.display(p, po);
+  /*
   fill(g);
   rect(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY, roundness);
   fill(p);
@@ -166,6 +148,6 @@ void drawObjectListInfo() {
   fill(g);
   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, imgRectObjectsSize, imgRectObjectsSize, roundness);
 
-
+  */
   popStyle();
 }
