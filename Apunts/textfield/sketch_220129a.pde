@@ -1,11 +1,11 @@
 Button b1, b2;             // Botons
 TextList tList1, tList2;   // Llista de textos
 
-String[][] listCountries = {{"0", "Alemania(Berlín)"},
-                            {"1", "Bélgica(Bruselas)"},
-                            {"2", "Corea del Norte(Pionyang)"},
-                            {"3", "España(Madrid)"},
-                            {"4", ""},
+String[][] listCountries = {{"0", "Alemania"},
+                            {"1", "Algola"},
+                            {"2", "Aanada"},
+                            {"3", "Brasil"},
+                            {"4", "Italy"},
                             {"5", "France"},
                             {"6", "Russia"},
                            };

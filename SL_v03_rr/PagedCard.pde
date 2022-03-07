@@ -79,7 +79,6 @@ class PagedCard {
 
   // Dibuixa taula
   void display() {
-    checkMouseOver();
     pushStyle();
     // Dibuixa Cards corresponent a la Pàgina
     int firstCardPage = numCardsPage*numPage;
@@ -118,7 +117,6 @@ class PagedCard {
     }else {
     mouseOverCards = false;
     }
-    println(selectedCard);
   }
   
   boolean checkMouseOver(){

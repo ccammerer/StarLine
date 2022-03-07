@@ -89,7 +89,7 @@ float infoRectY = bigImgY-margin/2;
 
 
 String[][] info = { {"Mercurio", "Dada 1" }, {"Titol 1", "Dada 1" },
-  {"Sistema Solar", "Dada 2" }, {"Titol 2", "Dada 2" },
+  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
   {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
   {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
   {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
@@ -102,14 +102,14 @@ int numCardsPage = 5;
 PagedCard pc, pcMini;
 int selectedCard = -1;
 String[][] infoCards = {
-  {"Mercurio", "Planeta", "Sistema Solar", "Venus", "Descripció 1"},
+  {"Mercury", "Planeta", "Sistema Solar", "Venus", "Descripció 1"},
   {"Venus",  "Planeta", "Sistema Solar", "Terra", "Descripció 2"},
-  {"Tierra",  "Planeta", "Sistema Solar", "Mart", "Descripció 3"},
-  {"Marte",  "Planeta", "Sistema Solar", "Secció 1", "Descripció 4"},
+  {"Earth",  "Planeta", "Sistema Solar", "Mart", "Descripció 3"},
+  {"Mars",  "Planeta", "Sistema Solar", "Secció 1", "Descripció 4"},
   {"Jupiter",  "Planeta", "Sistema Solar", "Secció 2", "Descripció 5"},
   {"Saturn",  "Planeta", "Sistema Solar", "Secció 2", "Descripció 6"},
-  {"Urano", "Planeta", "Sistema Solar", "Secció 1", "Descripció 7"},
-  {"Neptuno", "Planeta", "Sistema Solar", "Secció 1", "Descripció 1"},
+  {"Urane", "Planeta", "Sistema Solar", "Secció 1", "Descripció 7"},
+  {"Neptune", "Planeta", "Sistema Solar", "Secció 1", "Descripció 1"},
   {"Títol 9", "Planeta", "Sistema Solar", "Secció 2", "Descripció 2"},
   {"Títol 10", "Planeta", "Sistema Solar", "Secció 1", "Descripció 3"},
   {"Títol 11", "Planeta", "Sistema Solar", "Secció 1", "Descripció 4"},
@@ -132,3 +132,28 @@ boolean mouseText = false;
 boolean cursorHand = false;
 float txt;
 boolean selected = false;
+
+
+
+//UBI
+
+Button1 select, ubiActual;
+boolean ubiActualSelected;
+TextList regions;
+String[][] listCountries = {{"0", "Alemania(Berlín)"},
+                            {"1", "Bélgica(Bruselas)"},
+                            {"2", "Corea del Norte(Pionyang)"},
+                            {"3", "España(Madrid)"},
+                            {"4", "Estados Unidos(Washington D. C.)"},
+                            {"5", "Francia(París)"},
+                            {"6", "Russia(Moscú)"},
+                           };
+                           
+float ListW = 600, ListH = 60;
+float bW = 120, bH = 60;
+String selectedCountry; 
+
+
+
+String[] ajustes = {"Sistema Solar", "Constelaciones", "Estrellas", "Satelites Artificiales", "Cielo Profundo"};
+CheckBoxList cbl;

@@ -40,7 +40,7 @@ void draw() {
   updateCursor();
   pushStyle();
   fill(255);
-  textSize(18);
+  textSize(24);
   textAlign(RIGHT);
   text("PANTALLA ", width-50, 60);
   text("X: "+mouseX+", Y:"+mouseY, width-50, 100);

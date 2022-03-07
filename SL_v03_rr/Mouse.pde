@@ -1,22 +1,26 @@
 void mousePressed() {
   //UBI
-  if (bUBIactual.mouseOverButton() && pantalla == PANTALLA.UBI && pantalla != PANTALLA.FYH) {
-    pantalla = PANTALLA.FYH;
-  }
-  if (bCONT.mouseOverButton() && pantalla == PANTALLA.UBI) {
-    pantalla = PANTALLA.FYH;
+  if ( pantalla == PANTALLA.UBI) {
+    if (bUBIactual.mouseOverButton()) {
+      pantalla = PANTALLA.FYH;
+    }
+    if (bCONT.mouseOverButton()) {
+      pantalla = PANTALLA.FYH;
+    }
   }
 
 
   //FYH
-  if (bBACK.mouseOverButton() && pantalla == PANTALLA.FYH) {
-    pantalla = PANTALLA.UBI;
-  }
-  if (bCONT.mouseOverButton() && pantalla == PANTALLA.FYH) {
-    pantalla = PANTALLA.HOME;
-  }
-  if (bFYH.mouseOverButton() && pantalla == PANTALLA.FYH) {
-    pantalla = PANTALLA.HOME;
+  else if ( pantalla == PANTALLA.FYH) {
+    if (bBACK.mouseOverButton()) {
+      pantalla = PANTALLA.UBI;
+    }
+    if (bCONT.mouseOverButton()) {
+      pantalla = PANTALLA.HOME;
+    }
+    if (bFYH.mouseOverButton()) {
+      pantalla = PANTALLA.HOME;
+    }
   }
 
 
@@ -27,29 +31,33 @@ void mousePressed() {
   if (bBACK.mouseOverButton() && pantalla == PANTALLA.CONFIG) {
     pantalla = PANTALLA.HOME;
   }
+  cbl.checkMouse();
 
 
   //HOME
-  if (bBACK.mouseOverButton() && pantalla == PANTALLA.HOME) {
-    pantalla = PANTALLA.FYH;
+  if (pantalla == PANTALLA.HOME) {
+
+    if (bBACK.mouseOverButton()) {
+      pantalla = PANTALLA.FYH;
+    }
+    if (bBACK.mouseOverButton()) {
+      pantalla = PANTALLA.FYH;
+    }
+    if (next.mouseOverButton()) {
+      pc.nextPage();
+    }
+    if (prev.mouseOverButton()) {
+      pc.prevPage();
+    } else {
+      pc.checkCardSelection();
+    }
+    if (selected && mouseOverCards) {
+      pantalla = PANTALLA.INFO;
+    }
   }
-  if (bBACK.mouseOverButton() && pantalla == PANTALLA.HOME) {
-    pantalla = PANTALLA.FYH;
-  }
-  if (next.mouseOverButton() && pantalla == PANTALLA.HOME) {
-    pc.nextPage();
-  }
-  if (prev.mouseOverButton() && pantalla == PANTALLA.HOME) {
-    pc.prevPage();
-  } else {
-    pc.checkCardSelection();
-  }
-  if (selected && mouseOverCards && pantalla == PANTALLA.HOME) {
-    pantalla = PANTALLA.INFO;
-  }
-  
-  
-  
+
+
+
 
   // Pitjam sobre el botó de TRIA
   if (search.mouseOverButton() && search.enabled) {
@@ -62,19 +70,22 @@ void mousePressed() {
 
 
   //INFO
-  if (bBACK.mouseOverButton() && pantalla == PANTALLA.INFO) {
-    pantalla = PANTALLA.HOME;
-  }
-  if (nextMini.mouseOverButton() && pantalla == PANTALLA.INFO) {
-    pcMini.nextPage();
-  }
-  if (prevMini.mouseOverButton() && pantalla == PANTALLA.INFO) {
-    pcMini.prevPage();
-  } else {
-    pcMini.checkCardSelection();
-  }
-  if (selected && mouseOverCards && pantalla == PANTALLA.INFO) {
-    pantalla = PANTALLA.INFO;
+  if (pantalla == PANTALLA.INFO) {
+
+    if (bBACK.mouseOverButton()) {
+      pantalla = PANTALLA.HOME;
+    }
+    if (nextMini.mouseOverButton()) {
+      pcMini.nextPage();
+    }
+    if (prevMini.mouseOverButton()) {
+      pcMini.prevPage();
+    } else {
+      pcMini.checkCardSelection();
+    }
+    if (selected && mouseOverCards) {
+      pantalla = PANTALLA.INFO;
+    }
   }
 }
 
@@ -87,15 +98,33 @@ void updateCursor() {
     cursorHand = true;
   } else if (bBACK.mouseOverButton() && pantalla == PANTALLA.HOME ) {
     cursorHand = true;
+  } else if ((search.mouseOverButton() || pc.checkMouseOver() ) && pantalla == PANTALLA.HOME) {
+    cursorHand = true;
+  } else if ((searchMini.mouseOverButton() || pcMini.checkMouseOver() ) && pantalla == PANTALLA.INFO) {
+    cursorHand = true;
+  }
+}
+
+void mouseUbi() {
+
+  // Pitjam sobre el botó de TRIA
+  if (select.mouseOverButton() && select.enabled) {
+    selectedCountry = regions.selectedValue + "("+regions.selectedId+")";
   }
 
-  if (cursorHand) {
-    cursor(HAND);
+  // Pitjam damunt el textList
+  regions.textField.isPressed();
+  regions.buttonPressed();
+
+  if (regions.textField.selected) {
+    regions.update();
+  } else {
+    regions.buttons.clear();
   }
-  if (!cursorHand && !mouseText) {
-    cursor(ARROW);
-  }
-  if (mouseText) {
-    cursor(TEXT);
+
+
+  if (regions.textField.selected) {
+    regions.textField.keyPressed(key, (int)keyCode);
+    regions.update();
   }
 }

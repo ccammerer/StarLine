@@ -25,7 +25,7 @@ class TextField {
     pushStyle();
     if (selected) {
       stroke(bo);
-    } else if(mouseText) {
+    } else if (mouseText) {
       stroke(goo);
     } else {
       fill(p);
@@ -67,8 +67,7 @@ class TextField {
     if (textWidth(this.text + c) < w) {
       this.text += c;
       textLength++;
-      txt = txt + 23.33;
-      println(txt);
+      txt = txt + 23.3333;
     }
   }
 
@@ -76,7 +75,7 @@ class TextField {
   void removeText() {
     if (textLength - 1 >= 0) {
       text = text.substring(0, textLength - 1);
-      txt = txt - 23.33;
+      txt = txt - 23.3333;
       textLength--;
     }
   }
@@ -94,7 +93,7 @@ class TextField {
   // Selecciona el camp de text si pitjam a sobre
   // Deselecciona el camp de text si pitjam a fora
   void isPressed() {
-    if (mouseOverTextField()) {
+    if (mouseOverTextField() && mousePressed) {
       selected = true;
     } else {
       selected = false;
@@ -103,12 +102,13 @@ class TextField {
 
 
   void textCursor() {
+    int m = millis();
     if (mouseOverTextField()) {
       mouseText = true;
     } else {
       mouseText = false;
     }
-    if (selected && (frameCount%2 == 0)) {
+    if (selected && (m%2 == 0)) {
       pushStyle();
       stroke(n);
       line(x + txt + margin/4, ubiActualY - ubiActualSizeY + margin/4, x + txt + margin/4, ubiActualY+ -margin/4);

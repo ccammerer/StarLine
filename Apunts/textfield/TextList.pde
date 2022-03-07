@@ -5,14 +5,13 @@ class TextList {
 
   TextField textField;       // Camp de text
 
-  int selectedIndex;         // Fila seleccionada
   String selectedId;         // Id Seleccionat
   String selectedValue;      // Valor Seleccionat
 
   boolean enabled;           // Abilitat / desabilitat
 
   int numMatchs = 0;
-  ArrayList<Button1> buttons;
+  ArrayList<Button> buttons;
 
   TextList(String[][] texts, float x, float y, float w, float h) {
 
@@ -26,15 +25,15 @@ class TextList {
     this.enabled = true;
 
     this.textField = new TextField((int)x, (int)y, (int)w, (int)h);
-    this.buttons = new ArrayList<Button1>();
+    this.buttons = new ArrayList<Button>();
   }
 
   void display() {
     pushStyle();
     textField.display();
 
-    for(Button1 search: buttons){
-      search.display(g,go);
+    for(Button b : this.buttons){
+      b.display();
     }
     popStyle();
   }
@@ -42,26 +41,27 @@ class TextList {
   void update() {
 
     String searchFor = this.textField.text;
-    println("SEARCH FOR: "+searchFor);
     
     this.numMatchs = 0;
-    this.buttons = new ArrayList<Button1>();
+    this.buttons = new ArrayList<Button>();
     
-    if (searchFor.length() > 0) {
-      for (int i=0; i<texts.length; i++) {
-        if (texts[i][1].startsWith(searchFor)) {
-          Button1 search= new Button1(texts[i][1], x + 10, y + h + 50 + (h + 50)*numMatchs, w, h);
-          buttons.add(search);
-          this.numMatchs++;
-          if (this.numMatchs==5) {
-            break;
+    if(this.textField.selected){
+    
+      if (searchFor.length() > 0) {
+        for (int i=0; i<texts.length; i++) {
+          if (texts[i][1].startsWith(searchFor)) {
+            Button b = new Button(texts[i][1], x + 10, y + h + 50 + (h + 50)*numMatchs, w, h);
+            buttons.add(b);
+            this.numMatchs++;
+            if (this.numMatchs==5) {
+              break;
+            }
           }
         }
       }
-    }
-  else {
+      else {
         for (int i=0; i<texts.length; i++) {
-            Button1 b = new Button1(texts[i][1], x + 10, y + h + 50 + (h + 50)*i, w, h);
+            Button b = new Button(texts[i][1], x + 10, y + h + 50 + (h + 50)*i, w, h);
             buttons.add(b);
             if (i==3) {
               break;
@@ -69,10 +69,14 @@ class TextList {
         }
       }
     }
+    else{
+      buttons.clear();
+    }
+  }
   
   boolean mouseOverButtons(){
-    for(Button1 search: buttons){
-      if(search.mouseOverButton()){
+    for(Button b : buttons){
+      if(b.mouseOverButton()){
          return true;
        }
     }
@@ -81,10 +85,16 @@ class TextList {
   
   void buttonPressed(){
     boolean pressed = false;
-     for(Button1 search: buttons){
-       if(search.mouseOverButton()){
-         textField.text = search.textBoto;
-         this.selectedValue = search.textBoto;
+     for(Button b : buttons){
+       if(b.mouseOverButton()){
+         this.textField.text = b.textBoto;
+         this.selectedValue  = b.textBoto;
+         for(int i=0; i<texts.length; i++){
+           if(texts[i][1].equals(this.selectedValue)){
+             this.selectedId = texts[i][0];
+             break;
+           }
+         }
          pressed = true;
        }
      }
@@ -92,4 +102,5 @@ class TextList {
        buttons.clear();
      }
    }
+   
 }

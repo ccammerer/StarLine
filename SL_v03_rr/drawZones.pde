@@ -1,4 +1,5 @@
 
+
 void drawFyH() {
   pushStyle();
   bFYH.display(p, po);
@@ -25,17 +26,23 @@ void drawBanner() {
 }
 
 void drawUbi() {
+  //mouseUbi();
   pushStyle();
   bUBIactual.display(p, po);
-
-  /*fill(114, 110, 151);
-   rect(ubiActualX, ubiActualY, ubiActualSizeX, ubiActualSizeY, roundness);
-   fill(232, 237, 238);
-     /*textSize(26);
-   text("Ubicación actual", width/2, ubiActualY + ubiActualSizeY/1.333);
-   */fill(g);
-   rect(ubiScrollX, ubiScrollY, ubiScrollSizeX, ubiScrollSizeY, roundness);
-  popStyle();
+  /*regions.display();
+   select.display(g,go);
+   updateCursor();
+   
+   // Mostra la informació seleccionada
+   if (selectedCountry!=null) {
+   pushStyle();
+   textAlign(CENTER);
+   fill(go);
+   text("PAIS:"+selectedCountry, width/2, height/2);
+   popStyle();
+   }*/
+  fill(go);
+  rect(ubiScrollX, ubiScrollY, ubiScrollSizeX, ubiScrollSizeY, roundness);
 }
 
 void drawCont() {
@@ -54,13 +61,14 @@ void configButt() {
 }
 
 void drawObjectList() {
-  
+  updateCursor();
   fill(p);
   tList.display();
-  search.display(p,po);
-  if(selectedText!=null){
+  search.display(p, po);
+  if (selectedText!=null) {
     pushStyle();
-    textAlign(RIGHT); fill(n);
+    textAlign(RIGHT);
+    fill(n);
     text(selectedText, width/2, height/2);
     popStyle();
   }
@@ -125,29 +133,49 @@ void drawInfo() {
 void drawObjectListInfo() {
   pushStyle();
   tListMini.display();
-  searchMini.display(p,po);
+  searchMini.display(p, po);
   //rect(searchBarLX, searchBarY, searchBarSizeLX, searchBarSizeY, roundness);
   pcMini.display();
   nextMini.display(g, go);
   prevMini.display(p, po);
   /*
   fill(g);
-  rect(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-  fill(p);
-  rect(imgRectObjectsLX, imgRectObjectsY, imgRectObjectsSize, imgRectObjectsSize, roundness);
-  fill(p);
-  rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY + margin/4, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-  fill(g);
-  rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY + margin/4, imgRectObjectsSize, imgRectObjectsSize, roundness);
-  fill(g);
-  rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-  fill(p);
-  rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, imgRectObjectsSize, imgRectObjectsSize, roundness);
-  fill(p);
-  rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-  fill(g);
-  rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, imgRectObjectsSize, imgRectObjectsSize, roundness);
-
-  */
+   rect(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY, roundness);
+   fill(p);
+   rect(imgRectObjectsLX, imgRectObjectsY, imgRectObjectsSize, imgRectObjectsSize, roundness);
+   fill(p);
+   rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY + margin/4, rectObjectsSizeLX, rectObjectsSizeY, roundness);
+   fill(g);
+   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY + margin/4, imgRectObjectsSize, imgRectObjectsSize, roundness);
+   fill(g);
+   rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, rectObjectsSizeLX, rectObjectsSizeY, roundness);
+   fill(p);
+   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, imgRectObjectsSize, imgRectObjectsSize, roundness);
+   fill(p);
+   rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, rectObjectsSizeLX, rectObjectsSizeY, roundness);
+   fill(g);
+   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, imgRectObjectsSize, imgRectObjectsSize, roundness);
+   
+   */
   popStyle();
+}
+
+void drawConfig() {
+  pushStyle();
+  text("Mostrar solo:", width/2, 2*height/3, 50);
+  cbl.display();
+  updateCursor();
+  popStyle();
+}
+
+
+
+
+
+void drawBG() {
+  float c = 0;
+  for (int i = 0; i< 5; i++) {
+    image(bG[i], c, 45+c, logoSize, logoSize);
+    c = c +100;
+  }
 }

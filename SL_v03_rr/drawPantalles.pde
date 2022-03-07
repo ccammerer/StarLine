@@ -1,11 +1,11 @@
-void drawPantallaUBI(){
+void drawPantallaUBI() {
   drawBanner();
   drawUbi();
   drawCont();
   configButt();
 }
 
-void drawPantallaFYH(){
+void drawPantallaFYH() {
   drawBanner();
   drawFyH();
   drawCont();
@@ -13,7 +13,7 @@ void drawPantallaFYH(){
   configButt();
 }
 
-void drawPantallaHOME(){
+void drawPantallaHOME() {
   drawBanner();
   drawObjectList();
   drawObjectsBottom();
@@ -22,7 +22,7 @@ void drawPantallaHOME(){
   configButt();
 }
 
-void drawPantallaINFO(){
+void drawPantallaINFO() {
   drawBanner();
   drawInfo();
   drawObjectListInfo();
@@ -31,7 +31,8 @@ void drawPantallaINFO(){
   configButt();
 }
 
-void drawPantallaCONFIG(){
+void drawPantallaCONFIG() {
   drawBanner();
+  drawConfig();
   drawBack();
 }
