@@ -22,14 +22,6 @@ void draw() {
     drawPantalla05();
   }
 
-
-  pushStyle();
-  fill(255);
-  textSize(36);
-  textAlign(RIGHT);
-  text("PANTALLA "+numPantalla, width-50, 60);
-  text("X: "+mouseX+", Y:"+mouseY, width-50, 100);
-  popStyle();
 }
 
 void keyPressed() {

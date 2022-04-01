@@ -6,10 +6,12 @@ int buttonH = 100, buttonW = 300;
 void setGUI() {
   initPics();
   initFonts();
-  initButtons();
   initLabels();
   initCards();
   initSearch();
+  initButtons();
+  initUbis();
+  initLinkList();
   updateCursor();
 }
 
@@ -17,7 +19,6 @@ void setGUI() {
 void initButtons() {
   bUBIactual     = new Button1("Ubi. actual", ubiActualX, ubiActualY, ubiActualSizeX, ubiActualSizeY);
   bCONT     = new Button1("Continue", continueX, continueY, continueSizeX, continueSizeY);
-  bCONFIG = new Button1(" ", configX, configY, configSize, configSize);
   bBACK   = new Button1("Back", backX, backY, backSizeX, backSizeY);
   bUBI     = new Button1("UBI", ubiActualX, ubiActualY, ubiActualSizeX, ubiActualSizeY);
   bFYH      = new Button1("Fecha y hora del sistema", ubiActualX, ubiActualY, ubiActualSizeX, ubiActualSizeY);
@@ -57,30 +58,45 @@ void initSearch() {
   searchMini = new Button1(">", searchBarLX + searchBarSizeLX - backSizeX/4, searchBarY, backSizeX/4, backSizeY);
 
   /*regions = new TextList(listCountries, searchBarX+searchBarX/2, searchBarY + margin, searchBarSizeX/2 - backSizeX - margin/4, searchBarSizeY);
-  select = new Button1("ELEGIR", 3*width/4, height/12, buttonW, buttonH);*/
-  
-  cbl= new CheckBoxList(ajustes, width/3, height/4, 50, 50);
+   select = new Button1("ELEGIR", 3*width/4, height/12, buttonW, buttonH);*/
 
+  cbl= new CheckBoxList(ajustes, width/3, height/4, 50, 50);
+  regions = new CheckBoxList(ajustes, width/3, height/4, 50, 50);
 }
 
 void initPics() {
   sS = new PImage[8];
-  bG = new PImage[5];
   println("hola");
   for (int i = 0; i< sS.length; i++) {
     sS[i] = loadImage("ss/ss_"+ i + ".png");
   }
-  for (int i = 0; i< bG.length; i++) {
-    bG[i] = loadImage("stars/stars_"+ i + ".png");
-  }
+
   println("hola");
   logo = loadImage("logo_br.png");
-  
+
   on = loadImage("on.png");
   off = loadImage("off.png");
+
+  config = loadImage("config.png");
+  configg = loadImage("configg.png");
+  PImage[] buttonImages = {config, configg};
+  configuracion = new ImageButton(buttonImages, configX, configY, configSize, configSize);
 }
 
 void initFonts() {
   banner = createFont("banner.TTF", 100);
   general = createFont("text.ttf", 100);
+}
+
+void initUbis() {
+  ubi = new Select(listCountries, width/2 - ubiActualSizeX/2, ubiActualY + ubiActualSizeY, ubiActualSizeX, ubiActualSizeY);
+}
+
+void initLinkList() {
+  l = new ListLink(3, int(blackboardX), int(blackboardY), int(blackboardSizeX), int(blackboardSizeY));
+  l.setData(info3);
+
+  l2 = new ListLink(3, int(width-blackboardX-blackboardSizeX), int(blackboardY), int(blackboardSizeX), int(blackboardSizeY));
+  l2.setData(info2);
+  desktop = Desktop.getDesktop();
 }

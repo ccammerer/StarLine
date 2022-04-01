@@ -1,7 +1,9 @@
-class TextField {
+
+class TextArea {
   
   // Propietats del camp de text
   int x, y, h, w;
+  int numCols, numRows;
   
   // Colors
   color bgColor = color(140, 140, 140);
@@ -12,14 +14,16 @@ class TextField {
   
   // Text del camp
   String text = "";
-  int textLength = 0;
-  int textSize = 34;
+  String[] lines;
+  int textSize = 24;
 
   boolean selected = false;
    
   // Constructor
-  TextField(int x, int y, int w, int h) {
+  TextArea(int x, int y, int w, int h, int nc, int nr) {
       this.x = x; this.y = y; this.w = w; this.h = h;
+      this.numCols = nc; this.numRows = nr;
+      this.lines = new String[nr];
    }
   
   // Dibuixa el Camp de Text
@@ -36,9 +40,31 @@ class TextField {
       rect(x, y, w, h, 5);
       
       fill(fgColor);
-      textSize(textSize);
-      text(text, x + 15, y + textSize + 10);
+      textSize(textSize); textAlign(LEFT);
+      for(int i=0; i<lines.length; i++){
+        if(lines[i]!=null){
+          text(lines[i], x + 5, y + (i+1)*textSize);
+        }
+      }
       popStyle();
+   }
+   
+   void updateLines(){
+     if(text.length()>0){
+       int numLines = constrain(text.length() / numCols, 0, this.numRows-1);
+       //println("NUM LINES: "+numLines);
+       for(int i=0; i<=numLines; i++){
+           int start = i*numCols;
+           int end = min(text.length(), (i+1)*numCols);
+           lines[i] = text.substring(start, end);
+       }
+     }
+     else {
+        for(int i=0; i<lines.length; i++){ 
+          lines[i] ="";
+        }
+     }
+     //printArray(lines);
    }
    
    // Afegeix, lleva el text que es tecleja
@@ -49,39 +75,34 @@ class TextField {
          } else if (keyCode == 32) {
             addText(' '); // SPACE
          } else {
-            
-           boolean isKeyCapitalLetter = (key >= 'A' && key <= 'Z');
-           boolean isKeySmallLetter = (key >= 'a' && key <= 'z');
-           boolean isKeyNumber = (key >= '0' && key <= '9');
-      
-           if (isKeyCapitalLetter || isKeySmallLetter || isKeyNumber) {
-               addText(key);
-           }
+           addText(key);
          }
       }
    }
    
    // Afegeix la lletra c al final del text
    void addText(char c) {
-      if (textWidth(this.text + c) < w) {
+      if (this.text.length() < this.numCols*this.numRows) {
          this.text += c;
-         textLength++;
+         //println("TEXT:"+this.text);
       }
+      updateLines();
    }
    
    // Lleva la darrera lletra del text
    void removeText() {
-      if (textLength - 1 >= 0) {
-         text = text.substring(0, textLength - 1);
-         textLength--;
+      if (text.length()> 0) {
+         text = text.substring(0, text.length()-1);
       }
+      updateLines();
    }
 
    // Indica si el ratolí està sobre el camp de text
    boolean mouseOverTextField() {
-      if (mouseX >= this.x && mouseX <= this.x + this.w &&
-          mouseY >= this.y && mouseY <= this.y + this.h) {
+      if (mouseX >= this.x && mouseX <= this.x + this.w) {
+         if (mouseY >= this.y && mouseY <= this.y + this.h) {
             return true;
+         }
       }
       return false;
    }
@@ -96,5 +117,17 @@ class TextField {
       }
    }
    
-  
+   String getAllText(){
+     String txt="";
+     for(int i=0; i<lines.length; i++){
+       if(lines[i]!=null){
+         txt += lines[i] + "\n";
+       }
+     }
+     return txt;
+   }
+   
+   void setLines(String[] lines){
+     this.lines = lines;
+   }
 }

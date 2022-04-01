@@ -29,6 +29,7 @@ void drawUbi() {
   //mouseUbi();
   pushStyle();
   bUBIactual.display(p, po);
+  ubi.display();
   /*regions.display();
    select.display(g,go);
    updateCursor();
@@ -42,7 +43,7 @@ void drawUbi() {
    popStyle();
    }*/
   fill(go);
-  rect(ubiScrollX, ubiScrollY, ubiScrollSizeX, ubiScrollSizeY, roundness);
+  //rect(ubiScrollX, ubiScrollY, ubiScrollSizeX, ubiScrollSizeY, roundness);
 }
 
 void drawCont() {
@@ -57,7 +58,7 @@ void drawBack() {
 }
 
 void configButt() {
-  bCONFIG.display(p, po);
+  configuracion.display();
 }
 
 void drawObjectList() {
@@ -87,9 +88,11 @@ void drawObjectsBottom() {
 }
 
 void drawBlackboards() {
+
   fill(p);
-  rect(blackboardX, blackboardY, blackboardSizeX, blackboardSizeY, roundness);
-  rect(width-blackboardX-blackboardSizeX, blackboardY, blackboardSizeX, blackboardSizeY, roundness);
+  l.display();
+  l2.display();  
+  
 }
 
 void drawInfo() {
@@ -97,35 +100,6 @@ void drawInfo() {
   fill(p);
   rect(bigImgX, bigImgY-margin/2, bigImgSizeX, bigImgSizeY, roundness);
   fill(g);
-  /*fill(131, 181, 209);
-   rect(infoRectX, infoRectY, infoRectSizeX, infoRectSizeY, roundness);
-   fill(114, 110, 151);
-   rect(infoRectX+infoRectSizeX+ margin/2, infoRectY, infoRectSizeX, infoRectSizeY, roundness);
-   
-   fill(114, 110, 151);
-   rect(infoRectX, infoRectY + infoRectSizeY + margin/4, infoRectSizeX, infoRectSizeY, roundness);
-   fill(131, 181, 209);
-   rect(infoRectX+infoRectSizeX+ margin/2, infoRectY + infoRectSizeY + margin/4, infoRectSizeX, infoRectSizeY, roundness);
-   
-   fill(131, 181, 209);
-   rect(infoRectX, infoRectY + infoRectSizeY*2 + (margin/4)*2, infoRectSizeX, infoRectSizeY, roundness);
-   fill(114, 110, 151);
-   rect(infoRectX+infoRectSizeX+ margin/2, infoRectY + infoRectSizeY*2 + (margin/4)*2, infoRectSizeX, infoRectSizeY, roundness);
-   
-   fill(114, 110, 151);
-   rect(infoRectX, infoRectY + infoRectSizeY*3 + (margin/4)*3, infoRectSizeX, infoRectSizeY, roundness);
-   fill(131, 181, 209);
-   rect(infoRectX+infoRectSizeX+ margin/2, infoRectY + infoRectSizeY*3 + (margin/4)*3, infoRectSizeX, infoRectSizeY, roundness);
-   
-   fill(131, 181, 209);
-   rect(infoRectX, infoRectY + infoRectSizeY*4 + (margin/4)*4, infoRectSizeX, infoRectSizeY, roundness);
-   fill(114, 110, 151);
-   rect(infoRectX+infoRectSizeX+ margin/2, infoRectY + infoRectSizeY*4 + (margin/4)*4, infoRectSizeX, infoRectSizeY, roundness);
-   
-   fill(114, 110, 151);
-   rect(infoRectX, infoRectY + infoRectSizeY*5 + (margin/4)*5, infoRectSizeX, infoRectSizeY, roundness);
-   fill(131, 181, 209);
-   rect(infoRectX+infoRectSizeX+ margin/2, infoRectY + infoRectSizeY*5 + (margin/4)*5, infoRectSizeX, infoRectSizeY, roundness);*/
 
   t.display(int(infoRectX-margin*3), int(infoRectY+1), int(infoRectSizeX*2), int( bigImgSizeY - margin*1.25));
 }
@@ -138,25 +112,6 @@ void drawObjectListInfo() {
   pcMini.display();
   nextMini.display(g, go);
   prevMini.display(p, po);
-  /*
-  fill(g);
-   rect(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-   fill(p);
-   rect(imgRectObjectsLX, imgRectObjectsY, imgRectObjectsSize, imgRectObjectsSize, roundness);
-   fill(p);
-   rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY + margin/4, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-   fill(g);
-   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY + margin/4, imgRectObjectsSize, imgRectObjectsSize, roundness);
-   fill(g);
-   rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-   fill(p);
-   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY*2 + (margin/4)*2, imgRectObjectsSize, imgRectObjectsSize, roundness);
-   fill(p);
-   rect(rectObjectsLX, rectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, rectObjectsSizeLX, rectObjectsSizeY, roundness);
-   fill(g);
-   rect(imgRectObjectsLX, imgRectObjectsY + rectObjectsSizeY*3 + (margin/4)*3, imgRectObjectsSize, imgRectObjectsSize, roundness);
-   
-   */
   popStyle();
 }
 
@@ -166,16 +121,4 @@ void drawConfig() {
   cbl.display();
   updateCursor();
   popStyle();
-}
-
-
-
-
-
-void drawBG() {
-  float c = 0;
-  for (int i = 0; i< 5; i++) {
-    image(bG[i], c, 45+c, logoSize, logoSize);
-    c = c +100;
-  }
 }

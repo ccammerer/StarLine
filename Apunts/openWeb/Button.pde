@@ -1,3 +1,4 @@
+
 class Button {
   
  // Propietats d'un botó:

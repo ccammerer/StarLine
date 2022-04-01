@@ -1,5 +1,3 @@
-//int numPantalla = 2;
-
 enum PANTALLA {
   UBI, FYH, HOME, INFO, CONFIG
 };

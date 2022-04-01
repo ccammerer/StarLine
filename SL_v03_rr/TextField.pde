@@ -9,7 +9,6 @@ class TextField {
   String text = "";
   int textLength = 0;
   int textSize = 28;
-
   boolean selected = false;
 
   // Constructor

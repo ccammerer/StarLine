@@ -9,7 +9,7 @@ color goo = color(100, 110, 120);
 color gc = color(170, 180, 190);
 color g = color(190, 200, 210);
 color p = color(143, 129, 213);
-color po = color(105, 87, 199);
+color po = color(105, 90, 200);
 color bl = color(150, 200, 230);
 color bc = color(130, 180, 210);
 color bo = color(100, 150, 180);
@@ -95,7 +95,7 @@ String[][] info = { {"Mercurio", "Dada 1" }, {"Titol 1", "Dada 1" },
   {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
   {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
 };
-TableLabel t;
+TableLabel t, t2;
 
 Button1 next, prev, nextMini, prevMini;
 int numCardsPage = 5;
@@ -103,11 +103,11 @@ PagedCard pc, pcMini;
 int selectedCard = -1;
 String[][] infoCards = {
   {"Mercury", "Planeta", "Sistema Solar", "Venus", "Descripció 1"},
-  {"Venus",  "Planeta", "Sistema Solar", "Terra", "Descripció 2"},
-  {"Earth",  "Planeta", "Sistema Solar", "Mart", "Descripció 3"},
-  {"Mars",  "Planeta", "Sistema Solar", "Secció 1", "Descripció 4"},
-  {"Jupiter",  "Planeta", "Sistema Solar", "Secció 2", "Descripció 5"},
-  {"Saturn",  "Planeta", "Sistema Solar", "Secció 2", "Descripció 6"},
+  {"Venus", "Planeta", "Sistema Solar", "Terra", "Descripció 2"},
+  {"Earth", "Planeta", "Sistema Solar", "Mart", "Descripció 3"},
+  {"Mars", "Planeta", "Sistema Solar", "Secció 1", "Descripció 4"},
+  {"Jupiter", "Planeta", "Sistema Solar", "Secció 2", "Descripció 5"},
+  {"Saturn", "Planeta", "Sistema Solar", "Secció 2", "Descripció 6"},
   {"Urane", "Planeta", "Sistema Solar", "Secció 1", "Descripció 7"},
   {"Neptune", "Planeta", "Sistema Solar", "Secció 1", "Descripció 1"},
   {"Títol 9", "Planeta", "Sistema Solar", "Secció 2", "Descripció 2"},
@@ -139,21 +139,41 @@ boolean selected = false;
 
 Button1 select, ubiActual;
 boolean ubiActualSelected;
-TextList regions;
-String[][] listCountries = {{"0", "Alemania(Berlín)"},
-                            {"1", "Bélgica(Bruselas)"},
-                            {"2", "Corea del Norte(Pionyang)"},
-                            {"3", "España(Madrid)"},
-                            {"4", "Estados Unidos(Washington D. C.)"},
-                            {"5", "Francia(París)"},
-                            {"6", "Russia(Moscú)"},
-                           };
-                           
+CheckBoxList regions;
+String[] listCountries = {"Alemania(Berlín)", "Bélgica(Bruselas)", "Italia(Roma)", "España(Mallorca)", "Suiza(Berna)", "Francia(París)"};
+
 float ListW = 600, ListH = 60;
 float bW = 120, bH = 60;
-String selectedCountry; 
-
+String selectedCountry;
+Select ubi;
 
 
 String[] ajustes = {"Sistema Solar", "Constelaciones", "Estrellas", "Satelites Artificiales", "Cielo Profundo"};
 CheckBoxList cbl;
+
+
+Button1 searchUbi;
+ImageButton configuracion;
+
+int ubiNum = 0;
+
+
+
+String[][] info3 = { {"Google", 
+                     "http://www.google.com"},
+                    {"IES Manacor", 
+                     "http://www.iesmanacor.cat"},
+                     {"Diari ElPais", 
+                     "http://www.elpais.es"},
+                     {"Diari Marca", 
+                     "http://www.marca.com"},
+                  };
+String[][] info2 = { {"Lluvia de estrellas", 
+                     "20/07/22"},
+                    {"Satelite Hubble", 
+                     "03/08/22"},
+                     {"SpaceX launch", 
+                     "04/09/22"}
+                  };
+
+ListLink l, l2;

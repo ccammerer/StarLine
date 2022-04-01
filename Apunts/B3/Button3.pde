@@ -32,7 +32,7 @@ class ImageButton {
      imageMode(CORNER);
      image(imgDisabled, this.x, this.y, this.w, this.h);
    }
-   else if(mouseOverButton()){
+   else if(mouseOverButton3()){
      imageMode(CORNER);
      image(imgOver, this.x, this.y, this.w, this.h);
    }
@@ -45,7 +45,7 @@ class ImageButton {
  
  // Indica si el cursor està sobre el botó
  // Indica si el cursor està sobre el botó
- boolean mouseOverButton(){
+ boolean mouseOverButton3(){
    return (mouseX >= this.x) && 
           (mouseX<=this.x + this.w) && 
           (mouseY>= this.y) && 

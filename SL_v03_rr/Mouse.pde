@@ -7,6 +7,13 @@ void mousePressed() {
     if (bCONT.mouseOverButton()) {
       pantalla = PANTALLA.FYH;
     }
+    if (ubi.mouseOverSelect() && ubi.enabled) {
+      if (!ubi.collapsed) {
+        ubi.update();      // Actualitzar valor
+        updateUbi();    // Fer acció amb valor
+      }
+      ubi.toggle();        // Plegar o desplegar
+    }
   }
 
 
@@ -25,7 +32,7 @@ void mousePressed() {
 
 
   //CONFIG
-  if (bCONFIG.mouseOverButton()) {
+  if (configuracion.mouseOverButton()) {
     pantalla = PANTALLA.CONFIG;
   }
   if (bBACK.mouseOverButton() && pantalla == PANTALLA.CONFIG) {
@@ -87,6 +94,8 @@ void mousePressed() {
       pantalla = PANTALLA.INFO;
     }
   }
+  l.checkClicks();
+  
 }
 
 void updateCursor() {
@@ -102,29 +111,5 @@ void updateCursor() {
     cursorHand = true;
   } else if ((searchMini.mouseOverButton() || pcMini.checkMouseOver() ) && pantalla == PANTALLA.INFO) {
     cursorHand = true;
-  }
-}
-
-void mouseUbi() {
-
-  // Pitjam sobre el botó de TRIA
-  if (select.mouseOverButton() && select.enabled) {
-    selectedCountry = regions.selectedValue + "("+regions.selectedId+")";
-  }
-
-  // Pitjam damunt el textList
-  regions.textField.isPressed();
-  regions.buttonPressed();
-
-  if (regions.textField.selected) {
-    regions.update();
-  } else {
-    regions.buttons.clear();
-  }
-
-
-  if (regions.textField.selected) {
-    regions.textField.keyPressed(key, (int)keyCode);
-    regions.update();
   }
 }

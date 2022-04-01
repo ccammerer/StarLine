@@ -3,15 +3,16 @@ PImage img;
 
 PImage[] sS;
 PImage[] con;
-PImage[] es;
+/*PImage[] es;
 PImage[] sA;
 PImage[] cP;
-PImage[] bG;
+PImage[] bG;*/
 
 PImage on;
 PImage off;
 
-
-
 PFont banner;
 PFont general;
+
+PImage config;
+PImage configg;
