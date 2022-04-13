@@ -87,65 +87,9 @@ float infoRectSizeY = margin*2;
 float infoRectX = bigImgX + bigImgSizeY;
 float infoRectY = bigImgY-margin/2;
 
-String[] titols = {"nombre","descripcion","hora_salida","hora_puesta","nombre","descripcion","hora_salida","hora_puesta","nombre","descripcion","hora_salida","hora_puesta", "nombre","descripcion"};
+String[] titols = {"id","Nombre","Descripción","Hora de salida","Hora de la puesta","Magnitud aparente","Magnitud absoluta","Distancia a la tierra","Distancia al sol","Duración del día","Duración del año","Radio","AR", "DEC",};
 
-
-String[][] infoMer = { {"Mercurio", "Dada 1" }, {"Titol 1", "Dada 1" },
-  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
-  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
-  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
-  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
-  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
-};
-String[][] infoVen = { {"Venus", "Dada 1" }, {"Titol 1", "Dada 1" },
-  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
-  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
-  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
-  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
-  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
-};
-String[][] infoTie = { {"Tierra", "Dada 1" }, {"Titol 1", "Dada 1" },
-  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
-  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
-  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
-  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
-  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
-};
-String[][] infoMar = { {"Marte", "Dada 1" }, {"Titol 1", "Dada 1" },
-  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
-  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
-  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
-  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
-  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
-};
-String[][] infoJup = { {"Jupiter", "Dada 1" }, {"Titol 1", "Dada 1" },
-  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
-  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
-  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
-  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
-  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
-};
-String[][] infoSat = { {"Saturno", "Dada 1" }, {"Titol 1", "Dada 1" },
-  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
-  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
-  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
-  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
-  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
-};
-String[][] infoUra = { {"Urano", "Dada 1" }, {"Titol 1", "Dada 1" },
-  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
-  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
-  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
-  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
-  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
-};
-String[][] infoNep = { {"Neptuno", "Dada 1" }, {"Titol 1", "Dada 1" },
-  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
-  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
-  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
-  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
-  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
-};
+String[] nomsFotos = {"Mercurio", "Osa Menor", "Venus", "Marte", "Jupiter", "Saturno", "Urano", "Neptuno", "Osa Mayor"};
 
 
 TableLabel tMer, tVen, tTie, tMar, tJup, tSat, tUra, tNep;

@@ -34,8 +34,8 @@ int getNumRowsAstros() {
 
 String[][] getInfoAstros() {
   int numFiles = getNumRowsAstros();
-  String[][] info = new String[numFiles][4];
-  String q = "SELECT a.id AS id, a.nombre AS nombre, c.nombre AS categoria, a.descripcion AS descripcion "+
+  String[][] info = new String[numFiles][5];
+  String q = "SELECT a.id AS id, a.nombre AS nombre, c.nombre AS categoria, a.descripcion AS descripcion, a.f AS f "+
     "FROM astro a, categoria c WHERE a.categoria=c.id ORDER BY a.nombre ASC";
   msql.query(q);
   int nr=0;
@@ -44,6 +44,7 @@ String[][] getInfoAstros() {
     info[nr][1] = msql.getString("categoria");
     info[nr][2] = msql.getString("descripcion");
     info[nr][3] = String.valueOf(msql.getInt("id"));
+    info[nr][4] = String.valueOf(msql.getInt("f"));
     nr++;
   }
   return info;
@@ -59,10 +60,10 @@ int getNumRowsAstrosTipo(String categories) {
 
 String[][] getInfoAstrosTipo(String categories) {
   int numFiles = getNumRowsAstrosTipo(categories);
-  String[][] info = new String[numFiles][4];
-  String q = "SELECT a.id AS id,  a.nombre AS nombre, c.nombre AS categoria, a.descripcion AS descripcion "+
+  String[][] info = new String[numFiles][5];
+  String q = "SELECT a.id AS id,  a.nombre AS nombre, c.nombre AS categoria, a.descripcion AS descripcion, a.f AS f "+
     "FROM astro a, categoria c WHERE a.categoria=c.id AND c.nombre IN ("+categories+") ORDER BY a.nombre ASC";
-    println(q);
+  println(q);
   msql.query(q);
   int nr=0;
   while (msql.next()) {
@@ -70,6 +71,7 @@ String[][] getInfoAstrosTipo(String categories) {
     info[nr][1] = msql.getString("categoria");
     info[nr][2] = msql.getString("descripcion");
     info[nr][3] = String.valueOf(msql.getInt("id"));
+    info[nr][4] = String.valueOf(msql.getInt("f"));
     nr++;
   }
   return info;
@@ -77,7 +79,7 @@ String[][] getInfoAstrosTipo(String categories) {
 
 
 String[] getInfoAstro(int ida) {
-  int numCols = 14;
+  int numCols = 15;
   String[] info = new String[numCols];
   String q = "SELECT * FROM astro a WHERE a.id='"+ida+"'";
   msql.query(q);
@@ -96,6 +98,8 @@ String[] getInfoAstro(int ida) {
   info[11] = msql.getString("radio");
   info[12] = msql.getString("ar");
   info[13] = msql.getString("dec");
+  info[14] = String.valueOf(msql.getInt("f"));
+
   return info;
 }
 

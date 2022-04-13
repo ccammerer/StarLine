@@ -6,6 +6,7 @@ class Card {
   String section;
   String description;
   int id;
+  int f;
 
   // Dimensions
   float x, y, w, h, b;
@@ -28,6 +29,7 @@ class Card {
     this.place = info[1];
     this.date = info[2];
     this.id = Integer.valueOf(info[3]);
+    this.f = Integer.valueOf(info[4]);
   }
 
   //Setters
@@ -40,8 +42,8 @@ class Card {
     this.b = b;
   }
 
-  void setImage(PImage img) {
-    this.img = img;
+  void setImage() {
+    //this.img = loadImage("fotos/"+this.title+".png");
   }
 
   // Dibuixa la Card
@@ -63,14 +65,14 @@ class Card {
     // imatge descriptiva
     float imgW = h- b;
     float imgH = h - b;
-    if (img!=null) {
+    if (sS[this.f]!=null) {
       fill(b);
       rect(x + b/2, y + b/2, imgW, imgH, b/1.75);
-      image(img, x + b/2.25, y + b/2.25, imgW, imgH);
+      image(sS[this.f], x + b/2.25, y + b/2.25, imgW, imgH);
     } else {
       fill(50);
     }
-    
+
     if (pantalla == PANTALLA.HOME) {
       // Títol
       fill(0);
@@ -81,7 +83,7 @@ class Card {
       fill(0);
       textSize(18);
       textAlign(CENTER);
-      text(place, imgW/2 + x + w/3 , y + 2*h/3);
+      text(place, imgW/2 + x + w/3, y + 2*h/3);
 
       // Secció
       fill(0);

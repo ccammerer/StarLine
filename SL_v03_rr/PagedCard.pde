@@ -47,6 +47,7 @@ class PagedCard {
       for (int i = firstCardPage; i <= lastCardPage; i++) {
         if (i<cards.length) {
           cards[i] = new Card(cardsData[i]);
+          println(cardsData[i][0] +"   ->"+cardsData[i][4]);
           cards[i].setDimensions(x, yCard, w, hCard, roundness*1.75);
           yCard += hCard +margin/4;
         }
@@ -54,15 +55,11 @@ class PagedCard {
     }
   }
 
- void setImages(PImage[] sS, PImage[] con) {
-    for (int i=0; i<cards.length; i++) {
-      if (cards[i].section=="Secció 1") {
-        img = sS[i%8];
-      } else {
-        img = sS[i%8];
-      }
-      cards[i].setImage(img);
-    }
+ void setImages() {
+
+  /* for (int i=0; i<cards.length; i++) {
+      cards[i].setImage();
+    }*/
   }
 
   void nextPage() {
@@ -103,6 +100,7 @@ class PagedCard {
   void checkCardSelection(){
     int firstCardPage = numCardsPage*numPage;
     int lastCardPage  = numCardsPage*(numPage+1) - 1;
+    selected = false;
     for (int i = firstCardPage; i <= lastCardPage; i++) {
       if (i<cards.length && cards[i]!=null && cards[i].mouseOver()) {
         selectedCard = i;

@@ -32,36 +32,36 @@ void initLabels(int n) {
   String[] infoAstro = getInfoAstro(id);
   printArray(infoAstro);
   printArray(titols);
-  tMer.setLabelsInfo(infoAstro, titols, sS[id%sS.length]);
+  tMer.setLabelsInfo(infoAstro, titols, Integer.valueOf(infoAstro[14]));
 }
 
-void filtraCards(String tipo){
+void filtraCards(String tipo) {
   pc = new PagedCard(numCardsPage);
   pc.setDimensions(rectObjectsX, rectObjectsY, rectObjectsSizeX, rectObjectsSizeY*5);
   String[][] infoAstros = getInfoAstrosTipo(tipo);
   printArray2D(infoAstros);
   pc.setData(infoAstros);
   pc.setCards();
-  pc.setImages(sS, con);
+  pc.setImages();
 }
 
-void updateCards(String categories){
+void updateCards(String categories) {
   pc = new PagedCard(numCardsPage);
   pc.setDimensions(rectObjectsX, rectObjectsY, rectObjectsSizeX, rectObjectsSizeY*5);
   String[][] infoAstros = getInfoAstrosTipo(categories);
   printArray2D(infoAstros);
   pc.setData(infoAstros);
   pc.setCards();
-  pc.setImages(sS, con);
+  pc.setImages();
 
   next = new Button1("NEXT", (rectObjectsX+backSizeX+margin/4)+rectObjectsSizeX-backSizeX*2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX, backSizeY);
   prev = new Button1("PREV", (rectObjectsX)+rectObjectsSizeX-backSizeX*2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX, backSizeY);
-  
+
   pcMini = new PagedCard(numCardsPage);
   pcMini.setDimensions(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY*5);
   pcMini.setData(infoAstros);
   pcMini.setCards();
-  pcMini.setImages(sS, con);
+  pcMini.setImages();
 
   nextMini = new Button1(">", rectObjectsLX+rectObjectsSizeLX-backSizeX/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX/4-margin/8, backSizeY);
   prevMini = new Button1("<", rectObjectsLX+rectObjectsSizeLX-backSizeX/2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX/4-margin/8, backSizeY);
@@ -75,7 +75,7 @@ void initCards() {
   printArray2D(infoAstros);
   pc.setData(infoAstros);
   pc.setCards();
-  pc.setImages(sS, con);
+  pc.setImages();
 
   next = new Button1("NEXT", (rectObjectsX+backSizeX+margin/4)+rectObjectsSizeX-backSizeX*2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX, backSizeY);
   prev = new Button1("PREV", (rectObjectsX)+rectObjectsSizeX-backSizeX*2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX, backSizeY);
@@ -84,7 +84,7 @@ void initCards() {
   pcMini.setDimensions(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY*5);
   pcMini.setData(infoAstros);
   pcMini.setCards();
-  pcMini.setImages(sS, con);
+  pcMini.setImages();
 
   nextMini = new Button1(">", rectObjectsLX+rectObjectsSizeLX-backSizeX/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX/4-margin/8, backSizeY);
   prevMini = new Button1("<", rectObjectsLX+rectObjectsSizeLX-backSizeX/2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX/4-margin/8, backSizeY);
@@ -102,8 +102,8 @@ void initSearch() {
   cbl3= new CheckBoxList(ajustes2, width/3, height/4.5, 50, 50);
 
   c = new Calendari(int(ubiActualX), int(ubiScrollY+2*margin/3), int(ubiActualSizeX), 240, datesClau);
-  
-  
+
+
   h = new TextField(int(ubiActualX), int(height/2 + margin/2), int(ubiActualSizeX/2 - margin/8), int(ubiActualSizeY));
   m = new TextField(int(ubiActualX + ubiActualSizeX/2 + margin/4), int(height/2 + margin/2), int(ubiActualSizeX/2 - margin/8), int(ubiActualSizeY));
 }
@@ -126,14 +126,16 @@ void initSwitchFilterArray() {
 
 
 void initPics() {
-  sS = new PImage[8];
+  sS = new PImage[nomsFotos.length];
   fondo = loadImage("fondo.png");
   println("hola");
   for (int i = 0; i< sS.length; i++) {
-    sS[i] = loadImage("ss/ss_"+ i + ".png");
+    sS[i] = loadImage("fotos/"+nomsFotos[i] + ".png");
   }
 
-  println("hola");
+
+
+  //println("NOM FOTO: "+msql.getString("nombre"));
   logo = loadImage("logo_br.png");
 
   on = loadImage("on.png");
@@ -163,18 +165,17 @@ void initLinkList() {
   desktop = Desktop.getDesktop();
 }
 
-void initFYHSistema(){
-Calendar c = Calendar.getInstance();
-    
+void initFYHSistema() {
+  Calendar c = Calendar.getInstance();
+
   int any = c.get(Calendar.YEAR);
   int mes = c.get(Calendar.MONTH) + 1;
   int dia = c.get(Calendar.DATE);
-  
+
   println(dia+"/"+mes+"/"+any);
-  
+
   int hora = c.get(Calendar.HOUR);
   int minuts = c.get(Calendar.MINUTE);
-  
-  println(hora+":"+ minuts);
 
+  println(hora+":"+ minuts);
 }

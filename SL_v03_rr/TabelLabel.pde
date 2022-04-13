@@ -2,7 +2,7 @@ class TableLabel {
 
   int numRows;
   Label[] labels;
-  PImage foto;
+  int f;
 
   TableLabel(int nr) {
     this.numRows = nr;
@@ -17,17 +17,17 @@ class TableLabel {
    }
    }*/
 
-  void setLabelsInfo(String[] info, String[] titols, PImage foto) {
-    this.foto = foto;
-    for (int i=0; i<info.length; i++) {
-      this.labels[i] = new Label(titols[i], info[i], foto);
+  void setLabelsInfo(String[] info, String[] titols, int f) {
+    this.f = f;
+    for (int i=0; i<12; i++) {
+      this.labels[i] = new Label(titols[i], info[i], f);
     }
   }
 
   void display(int x, int y, int w, int h) {
     pushStyle();
     textAlign(LEFT);
-    for (int i=0; i<labels.length; i++) {
+    for (int i=0; i<12; i++) {
       int px = x + ((i%2==0)? 0 : int(w/2 + margin/4));
       int py = y + (i/2)* int((h/6 + margin/4));
       if (i%2==0) {

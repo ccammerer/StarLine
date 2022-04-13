@@ -38,6 +38,7 @@ void mousePressed() {
   else if (pantalla == PANTALLA.CONFIG) {
     if (bBACK.mouseOverButton()) {
       pantalla = PANTALLA.HOME;
+      selected = false;
     }
     cbl.checkMouse();
     cbl3.checkMouse();
@@ -46,6 +47,19 @@ void mousePressed() {
 
   //HOME
   else if (pantalla == PANTALLA.HOME) {
+    
+    pc.checkCardSelection();
+      if (selectedCard!=-1) {
+        id = pcMini.cards[selectedCard].id;
+        initLabels(id);
+        pantalla = PANTALLA.INFO;
+      }
+      
+      sfa.updateFilters();
+      if(sfa.getNumSelected()>0){
+        printArray(sfa.getSelectedValues());
+      updateCards(sfa.getSelectedValuesIn());
+      }
 
     if (bBACK.mouseOverButton()) {
       pantalla = PANTALLA.FYH;
@@ -55,39 +69,32 @@ void mousePressed() {
       pc.nextPage();
     } else if (prev.mouseOverButton()) {
       pc.prevPage();
-    } else {
-      if (!tList.textField.selected) {
-        pc.checkCardSelection();
-        if (selectedCard!=-1) {
-          id = pcMini.cards[selectedCard].id;
-          println("ID SELECTED CARD: "+id);
-          initLabels(id);
-        }
-      }
-    }
-    if (selected && mouseOverCards) {
+    } else if (!tList.textField.selected) {
+      
+    } else if (selected && mouseOverCards) {
       pantalla = PANTALLA.INFO;
+      selected = false;
+      selectedCard= -1;
     }
     // Pitjam sobre el botó de TRIA
     else if (search.mouseOverButton() && search.enabled) {
       selectedText = tList.selectedValue;
-    }
-    // Pitjam damunt el textList
-    tList.textField.isPressed();
-    tList.buttonPressed();
+    } 
+      
+      // Pitjam damunt el textList
+      tList.textField.isPressed();
+      tList.buttonPressed();
+      
+      if (next.mouseOverButton()) {
+      pc.nextPage();
+    } 
+      
 
+      // Actualitzam els filtres
+      
 
-
-
-
-    // Actualitzam els filtres
-    sfa.updateFilters();
-    //if(sfa.getNumSelected()>0){
-    String name = sfa.getSelectedValues()[0];
-    println(name);
-    updateCards(sfa.getSelectedValuesIn());
-
-    printArray(sfa.getSelectedValues());
+      
+    
     //}
   }
 

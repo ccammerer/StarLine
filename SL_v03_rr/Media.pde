@@ -17,3 +17,5 @@ PImage fondo;
 
 PImage config;
 PImage configg;
+
+PImage foto;
