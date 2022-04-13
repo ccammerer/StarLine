@@ -10,12 +10,14 @@ void setup() {
   textAlign(CENTER);
   textSize(18);
   strokeWeight(3);
+  connexioBBDD();
   setGUI();
   textFont(general);
 }
 
 void draw() {
-  background(g);
+    image(fondo, 0, 0, 1600, 1100);
+  
 
   switch(pantalla) {
   case UBI:
@@ -33,14 +35,6 @@ void draw() {
   case CONFIG:
     drawPantallaCONFIG();
     break;
-    
   }
   updateCursor();
-  pushStyle();
-  fill(255);
-  textSize(24);
-  textAlign(RIGHT);
-  text("PANTALLA ", width-50, 60);
-  text("X: "+mouseX+", Y:"+mouseY, width-50, 100);
-  popStyle();
 }

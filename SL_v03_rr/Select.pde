@@ -4,7 +4,7 @@ class Select {
   float x, y, w, h;          // Posició i dimensions
   String[] texts;            // Valors possibles
   String selectedValue;      // Valor Seleccionat
-
+  
   boolean collapsed = true;  // Plegat / Desplegat
   boolean enabled;           // Abilitat / desabilitat
 
@@ -26,6 +26,28 @@ class Select {
     pushStyle();
     stroke(0);
     strokeWeight(2);
+    textAlign(CORNER);
+    if (!this.collapsed) {
+
+      fill(go);
+      stroke(0);
+      rect(x, y+h-5, w, (h + lineSpace)*texts.length, roundness);
+
+      for (int i=0; i<texts.length; i++) {
+
+        if (i== clickedOption()) {
+          pushStyle();
+          fill(gc);
+          noStroke();
+          rect(x+4, y+4 + h + (h + lineSpace)*i - 2, w -8, h + lineSpace - 8, roundness);
+          popStyle();
+        }
+
+        fill(0);
+        textSize(18);
+        text(texts[i], x + 5, y + h + 25 + (h + lineSpace)*i);
+      }
+    }
     fill(g);
     rect(x, y, w, h, margin/5.5);
 
@@ -38,28 +60,11 @@ class Select {
 
     fill(0);
     textSize(18);
-    text(selectedValue, x + 5, y + 17);
+    text(selectedValue, x + 5, y + 28);
 
-    if (!this.collapsed) {
-
-      fill(go);
-      stroke(0);
-      rect(x, y+h-5, w, (h + lineSpace)*texts.length, margin/6);
-
-      for (int i=0; i<texts.length; i++) {
-
-        if (i== clickedOption()) {
-          fill(gc);
-          noStroke();
-          rect(x+4, y+4 + h + (h + lineSpace)*i - 2, w -8, h + lineSpace - 8);
-        }
-
-        fill(0);
-        textSize(18);
-        text(texts[i], x + 5, y + h + 25 + (h + lineSpace)*i);
-      }
-    }
+    
     popStyle();
+    selectedValueUbi = selectedValue;
   }
 
   void setCollapsed(boolean b) {

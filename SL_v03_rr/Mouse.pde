@@ -28,56 +28,73 @@ void mousePressed() {
     if (bFYH.mouseOverButton()) {
       pantalla = PANTALLA.HOME;
     }
+    c.checkButtons();
+    h.isPressed();
+    m.isPressed();
   }
 
 
-  //CONFIG
-  if (configuracion.mouseOverButton()) {
-    pantalla = PANTALLA.CONFIG;
+  // CONFIG
+  else if (pantalla == PANTALLA.CONFIG) {
+    if (bBACK.mouseOverButton()) {
+      pantalla = PANTALLA.HOME;
+    }
+    cbl.checkMouse();
+    cbl3.checkMouse();
   }
-  if (bBACK.mouseOverButton() && pantalla == PANTALLA.CONFIG) {
-    pantalla = PANTALLA.HOME;
-  }
-  cbl.checkMouse();
 
 
   //HOME
-  if (pantalla == PANTALLA.HOME) {
+  else if (pantalla == PANTALLA.HOME) {
 
     if (bBACK.mouseOverButton()) {
       pantalla = PANTALLA.FYH;
-    }
-    if (bBACK.mouseOverButton()) {
+    } else if (bBACK.mouseOverButton()) {
       pantalla = PANTALLA.FYH;
-    }
-    if (next.mouseOverButton()) {
+    } else if (next.mouseOverButton()) {
       pc.nextPage();
-    }
-    if (prev.mouseOverButton()) {
+    } else if (prev.mouseOverButton()) {
       pc.prevPage();
     } else {
-      pc.checkCardSelection();
+      if (!tList.textField.selected) {
+        pc.checkCardSelection();
+        if (selectedCard!=-1) {
+          id = pcMini.cards[selectedCard].id;
+          println("ID SELECTED CARD: "+id);
+          initLabels(id);
+        }
+      }
     }
     if (selected && mouseOverCards) {
       pantalla = PANTALLA.INFO;
     }
+    // Pitjam sobre el botó de TRIA
+    else if (search.mouseOverButton() && search.enabled) {
+      selectedText = tList.selectedValue;
+    }
+    // Pitjam damunt el textList
+    tList.textField.isPressed();
+    tList.buttonPressed();
+
+
+
+
+
+    // Actualitzam els filtres
+    sfa.updateFilters();
+    //if(sfa.getNumSelected()>0){
+    String name = sfa.getSelectedValues()[0];
+    println(name);
+    updateCards(sfa.getSelectedValuesIn());
+
+    printArray(sfa.getSelectedValues());
+    //}
   }
 
-
-
-
-  // Pitjam sobre el botó de TRIA
-  if (search.mouseOverButton() && search.enabled) {
-    selectedText = tList.selectedValue;
-  }
-
-  // Pitjam damunt el textList
-  tList.textField.isPressed();
-  tList.buttonPressed();
 
 
   //INFO
-  if (pantalla == PANTALLA.INFO) {
+  else if (pantalla == PANTALLA.INFO) {
 
     if (bBACK.mouseOverButton()) {
       pantalla = PANTALLA.HOME;
@@ -89,13 +106,34 @@ void mousePressed() {
       pcMini.prevPage();
     } else {
       pcMini.checkCardSelection();
+      //int n = selectedCard + 1;
+      if (pcMini.checkMouseOver()) {
+        id = pcMini.cards[selectedCard].id;
+        println("ID SELECTED CARD: "+id);
+        initLabels(id);
+      }
     }
     if (selected && mouseOverCards) {
       pantalla = PANTALLA.INFO;
     }
+
+    // Actualitzam els filtres
+    sfa.updateFilters();
+    if (sfa.updateCursor()) {
+      updateCards(sfa.getSelectedValuesIn());
+    }
   }
+
+  //CONFIG
+  if (configuracion.mouseOverButton()) {
+    pantalla = PANTALLA.CONFIG;
+  } else if (search.mouseOverButton() && search.enabled) {
+    selectedText = tList.selectedValue;
+  }
+  // Pitjam damunt el textList
+  tListMini.textField.isPressed();
+  tListMini.buttonPressed();
   l.checkClicks();
-  
 }
 
 void updateCursor() {
@@ -111,5 +149,9 @@ void updateCursor() {
     cursorHand = true;
   } else if ((searchMini.mouseOverButton() || pcMini.checkMouseOver() ) && pantalla == PANTALLA.INFO) {
     cursorHand = true;
+  } else  if (sfa.updateCursor()) {
+    cursor(HAND);
+  } else {
+    cursor(ARROW);
   }
 }

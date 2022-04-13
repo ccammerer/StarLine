@@ -8,7 +8,7 @@ color go = color(130, 140, 150);
 color goo = color(100, 110, 120);
 color gc = color(170, 180, 190);
 color g = color(190, 200, 210);
-color p = color(143, 129, 213);
+color p = color(140, 130, 215);
 color po = color(105, 90, 200);
 color bl = color(150, 200, 230);
 color bc = color(130, 180, 210);
@@ -18,7 +18,7 @@ color bo = color(100, 150, 180);
 float bannerX = 750;
 float bannerY = 100;
 float logoSize = 100;
-float logoX = bannerX +270;
+float logoX = bannerX + 270;
 float logoY = bannerY;
 
 
@@ -63,7 +63,7 @@ float imgRectObjectsSize = logoSize/1.4;
 float imgRectObjectsX = rectObjectsX + margin/2;
 float imgRectObjectsY = rectObjectsY + margin/2;
 
-float objectsBottomX = width/2 - logoSize/2;
+float objectsBottomX = width/2 - logoSize/2- 400;
 float objectsBottomY = height - margin*5.5;
 
 float blackboardSizeX = dist(0, 0, searchBarX, 0)-margin*4;
@@ -87,35 +87,83 @@ float infoRectSizeY = margin*2;
 float infoRectX = bigImgX + bigImgSizeY;
 float infoRectY = bigImgY-margin/2;
 
+String[] titols = {"nombre","descripcion","hora_salida","hora_puesta","nombre","descripcion","hora_salida","hora_puesta","nombre","descripcion","hora_salida","hora_puesta", "nombre","descripcion"};
 
-String[][] info = { {"Mercurio", "Dada 1" }, {"Titol 1", "Dada 1" },
+
+String[][] infoMer = { {"Mercurio", "Dada 1" }, {"Titol 1", "Dada 1" },
   {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
   {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
   {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
   {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
   {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
 };
-TableLabel t, t2;
+String[][] infoVen = { {"Venus", "Dada 1" }, {"Titol 1", "Dada 1" },
+  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
+  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
+  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
+  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
+  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
+};
+String[][] infoTie = { {"Tierra", "Dada 1" }, {"Titol 1", "Dada 1" },
+  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
+  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
+  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
+  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
+  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
+};
+String[][] infoMar = { {"Marte", "Dada 1" }, {"Titol 1", "Dada 1" },
+  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
+  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
+  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
+  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
+  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
+};
+String[][] infoJup = { {"Jupiter", "Dada 1" }, {"Titol 1", "Dada 1" },
+  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
+  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
+  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
+  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
+  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
+};
+String[][] infoSat = { {"Saturno", "Dada 1" }, {"Titol 1", "Dada 1" },
+  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
+  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
+  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
+  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
+  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
+};
+String[][] infoUra = { {"Urano", "Dada 1" }, {"Titol 1", "Dada 1" },
+  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
+  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
+  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
+  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
+  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
+};
+String[][] infoNep = { {"Neptuno", "Dada 1" }, {"Titol 1", "Dada 1" },
+  {"Sistema Solar", "Dada 2" }, {"Planeta", "Dada 2" },
+  {"Titol 3", "Dada 3" }, {"Titol 3", "Dada 3" },
+  {"Titol 4", "Dada 4" }, {"Titol 4", "Dada 4" },
+  {"Titol 5", "Dada 5" }, {"Titol 5", "Dada 5" },
+  {"Titol 6", "Dada 6" }, {"Titol 6", "Dada 6" },
+};
+
+
+TableLabel tMer, tVen, tTie, tMar, tJup, tSat, tUra, tNep;
 
 Button1 next, prev, nextMini, prevMini;
 int numCardsPage = 5;
 PagedCard pc, pcMini;
-int selectedCard = -1;
+int selectedCard = 2;
+//demanar a nene toni si puc fer que me filtri per dades, es a dir, que pugui triar sa info que se mostra.
 String[][] infoCards = {
-  {"Mercury", "Planeta", "Sistema Solar", "Venus", "Descripció 1"},
-  {"Venus", "Planeta", "Sistema Solar", "Terra", "Descripció 2"},
-  {"Earth", "Planeta", "Sistema Solar", "Mart", "Descripció 3"},
-  {"Mars", "Planeta", "Sistema Solar", "Secció 1", "Descripció 4"},
-  {"Jupiter", "Planeta", "Sistema Solar", "Secció 2", "Descripció 5"},
-  {"Saturn", "Planeta", "Sistema Solar", "Secció 2", "Descripció 6"},
-  {"Urane", "Planeta", "Sistema Solar", "Secció 1", "Descripció 7"},
-  {"Neptune", "Planeta", "Sistema Solar", "Secció 1", "Descripció 1"},
-  {"Títol 9", "Planeta", "Sistema Solar", "Secció 2", "Descripció 2"},
-  {"Títol 10", "Planeta", "Sistema Solar", "Secció 1", "Descripció 3"},
-  {"Títol 11", "Planeta", "Sistema Solar", "Secció 1", "Descripció 4"},
-  {"Títol 12", "Lloc 5", "Data 5", "Secció 2", "Descripció 5"},
-  {"Títol 13", "Lloc 6", "Data 6", "Secció 2", "Descripció 6"},
-  {"Títol 14", "Lloc 7", "Data 7", "Secció 1", "Descripció 7"},
+  {"Mercury", "Planeta", "Sistema Solar"},
+  {"Venus", "Planeta", "Sistema Solar"},
+  {"Earth", "Planeta", "Sistema Solar"},
+  {"Mars", "Planeta", "Sistema Solar"},
+  {"Jupiter", "Planeta", "Sistema Solar"},
+  {"Saturn", "Planeta", "Sistema Solar"},
+  {"Urane", "Planeta", "Sistema Solar"},
+  {"Neptune", "Planeta", "Sistema Solar"},
 };
 
 Button1 search, searchMini;         // Botons
@@ -146,10 +194,10 @@ float ListW = 600, ListH = 60;
 float bW = 120, bH = 60;
 String selectedCountry;
 Select ubi;
-
+String selectedValueUbi;
 
 String[] ajustes = {"Sistema Solar", "Constelaciones", "Estrellas", "Satelites Artificiales", "Cielo Profundo"};
-CheckBoxList cbl;
+CheckBoxList cbl, cbl2, cbl3;
 
 
 Button1 searchUbi;
@@ -159,21 +207,37 @@ int ubiNum = 0;
 
 
 
-String[][] info3 = { {"Google", 
-                     "http://www.google.com"},
-                    {"IES Manacor", 
-                     "http://www.iesmanacor.cat"},
-                     {"Diari ElPais", 
-                     "http://www.elpais.es"},
-                     {"Diari Marca", 
-                     "http://www.marca.com"},
-                  };
-String[][] info2 = { {"Lluvia de estrellas", 
-                     "20/07/22"},
-                    {"Satelite Hubble", 
-                     "03/08/22"},
-                     {"SpaceX launch", 
-                     "04/09/22"}
-                  };
+String[][] info3 = { {"Google",
+  "http://www.google.com"},
+  {"IES Manacor",
+  "http://www.iesmanacor.cat"},
+  {"Diari ElPais",
+  "http://www.elpais.es"},
+  {"Diari Marca",
+  "http://www.marca.com"},
+};
+String[][] info2 = { {"Lluvia de estrellas",
+  "20/07/22"},
+  {"Satelite Hubble",
+  "03/08/22"},
+  {"SpaceX launch",
+  "04/09/22"}
+};
 
 ListLink l, l2;
+
+String[] ajustes2 = {"Música", "Utilizar ubicaión del sistema siempre", "Utilizar fecho y hora del sistema siempre"};
+
+int dia1, mes1, any1;
+Calendari c;
+String[][] datesClau = {{"2021-03-15", "CUMPLE"}, {"2021-03-28", "FESTA"}};
+
+PImage[] aj, ajb;
+SwitchFilterArray sfa;
+int hora, minuts;
+TextField h, m;
+String[][] hores = {{"",""}};
+String textHora, text2;
+
+
+int id;

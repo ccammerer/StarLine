@@ -49,8 +49,8 @@ class TextList {
     
     if (searchFor.length() > 0) {
       for (int i=0; i<texts.length; i++) {
-        if (texts[i][1].startsWith(searchFor)) {
-          Button1 search= new Button1(texts[i][1], x + 10, y + h + 50 + (h + 50)*numMatchs, w, h);
+        if (texts[i][0].startsWith(searchFor)) {
+          Button1 search= new Button1(texts[i][0], x + 10, y + h + 50 + (h + 50)*numMatchs, w, h);
           buttons.add(search);
           this.numMatchs++;
           if (this.numMatchs==5) {
@@ -61,7 +61,7 @@ class TextList {
     }
   else {
         for (int i=0; i<texts.length; i++) {
-            Button1 b = new Button1(texts[i][1], x + 10, y + h + 50 + (h + 50)*i, w, h);
+            Button1 b = new Button1(texts[i][0], x + 10, y + h + 50 + (h + 50)*i, w, h);
             buttons.add(b);
             if (i==3) {
               break;

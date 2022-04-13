@@ -6,12 +6,14 @@ int buttonH = 100, buttonW = 300;
 void setGUI() {
   initPics();
   initFonts();
-  initLabels();
+  initLabels(1);
   initCards();
   initSearch();
   initButtons();
+  initSwitchFilterArray();
   initUbis();
   initLinkList();
+  initFYHSistema();
   updateCursor();
 }
 
@@ -25,15 +27,53 @@ void initButtons() {
 }
 
 
-void initLabels() {
-  t = new TableLabel(12);
-  t.setLabelsInfo(info);
+void initLabels(int n) {
+  tMer = new TableLabel(14);
+  String[] infoAstro = getInfoAstro(id);
+  printArray(infoAstro);
+  printArray(titols);
+  tMer.setLabelsInfo(infoAstro, titols, sS[id%sS.length]);
 }
+
+void filtraCards(String tipo){
+  pc = new PagedCard(numCardsPage);
+  pc.setDimensions(rectObjectsX, rectObjectsY, rectObjectsSizeX, rectObjectsSizeY*5);
+  String[][] infoAstros = getInfoAstrosTipo(tipo);
+  printArray2D(infoAstros);
+  pc.setData(infoAstros);
+  pc.setCards();
+  pc.setImages(sS, con);
+}
+
+void updateCards(String categories){
+  pc = new PagedCard(numCardsPage);
+  pc.setDimensions(rectObjectsX, rectObjectsY, rectObjectsSizeX, rectObjectsSizeY*5);
+  String[][] infoAstros = getInfoAstrosTipo(categories);
+  printArray2D(infoAstros);
+  pc.setData(infoAstros);
+  pc.setCards();
+  pc.setImages(sS, con);
+
+  next = new Button1("NEXT", (rectObjectsX+backSizeX+margin/4)+rectObjectsSizeX-backSizeX*2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX, backSizeY);
+  prev = new Button1("PREV", (rectObjectsX)+rectObjectsSizeX-backSizeX*2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX, backSizeY);
+  
+  pcMini = new PagedCard(numCardsPage);
+  pcMini.setDimensions(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY*5);
+  pcMini.setData(infoAstros);
+  pcMini.setCards();
+  pcMini.setImages(sS, con);
+
+  nextMini = new Button1(">", rectObjectsLX+rectObjectsSizeLX-backSizeX/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX/4-margin/8, backSizeY);
+  prevMini = new Button1("<", rectObjectsLX+rectObjectsSizeLX-backSizeX/2-margin/4, rectObjectsY + rectObjectsSizeY*5 + (margin/4)*5, backSizeX/4-margin/8, backSizeY);
+}
+
 
 void initCards() {
   pc = new PagedCard(numCardsPage);
   pc.setDimensions(rectObjectsX, rectObjectsY, rectObjectsSizeX, rectObjectsSizeY*5);
-  pc.setData(infoCards);
+  String[][] infoAstros = getInfoAstros();
+  printArray2D(infoAstros);
+  pc.setData(infoAstros);
   pc.setCards();
   pc.setImages(sS, con);
 
@@ -42,7 +82,7 @@ void initCards() {
 
   pcMini = new PagedCard(numCardsPage);
   pcMini.setDimensions(rectObjectsLX, rectObjectsY, rectObjectsSizeLX, rectObjectsSizeY*5);
-  pcMini.setData(infoCards);
+  pcMini.setData(infoAstros);
   pcMini.setCards();
   pcMini.setImages(sS, con);
 
@@ -57,15 +97,37 @@ void initSearch() {
   tListMini = new TextList(infoCards, searchBarLX, searchBarY, searchBarSizeLX-backSizeX/4 -margin/4, searchBarSizeY);
   searchMini = new Button1(">", searchBarLX + searchBarSizeLX - backSizeX/4, searchBarY, backSizeX/4, backSizeY);
 
-  /*regions = new TextList(listCountries, searchBarX+searchBarX/2, searchBarY + margin, searchBarSizeX/2 - backSizeX - margin/4, searchBarSizeY);
-   select = new Button1("ELEGIR", 3*width/4, height/12, buttonW, buttonH);*/
+  cbl= new CheckBoxList(ajustes, width/3, height/2, 50, 50);
+  cbl2 = new CheckBoxList(ajustes, objectsBottomX, objectsBottomY, logoSize, logoSize);
+  cbl3= new CheckBoxList(ajustes2, width/3, height/4.5, 50, 50);
 
-  cbl= new CheckBoxList(ajustes, width/3, height/4, 50, 50);
-  regions = new CheckBoxList(ajustes, width/3, height/4, 50, 50);
+  c = new Calendari(int(ubiActualX), int(ubiScrollY+2*margin/3), int(ubiActualSizeX), 240, datesClau);
+  
+  
+  h = new TextField(int(ubiActualX), int(height/2 + margin/2), int(ubiActualSizeX/2 - margin/8), int(ubiActualSizeY));
+  m = new TextField(int(ubiActualX + ubiActualSizeX/2 + margin/4), int(height/2 + margin/2), int(ubiActualSizeX/2 - margin/8), int(ubiActualSizeY));
 }
+
+void initSwitchFilterArray() {
+  sfa = new SwitchFilterArray(int(objectsBottomX + 50), int(objectsBottomY), int(8*logoSize), int(logoSize));
+
+
+  aj = new PImage[5];
+  ajb = new PImage[5];
+
+  for (int i = 0; i< aj.length; i++) {
+    aj[i] = loadImage("filter/SS"+ i + ".png");
+    ajb[i] = loadImage("filter/SSb"+ i + ".png");
+  }
+
+  // Establim les etiquetes (noms) dels filtres
+  sfa.setData(ajustes);
+}
+
 
 void initPics() {
   sS = new PImage[8];
+  fondo = loadImage("fondo.png");
   println("hola");
   for (int i = 0; i< sS.length; i++) {
     sS[i] = loadImage("ss/ss_"+ i + ".png");
@@ -89,7 +151,7 @@ void initFonts() {
 }
 
 void initUbis() {
-  ubi = new Select(listCountries, width/2 - ubiActualSizeX/2, ubiActualY + ubiActualSizeY, ubiActualSizeX, ubiActualSizeY);
+  ubi = new Select(listCountries, width/2 - ubiActualSizeX/2, ubiActualY + ubiActualSizeY + margin/2, ubiActualSizeX, ubiActualSizeY);
 }
 
 void initLinkList() {
@@ -99,4 +161,20 @@ void initLinkList() {
   l2 = new ListLink(3, int(width-blackboardX-blackboardSizeX), int(blackboardY), int(blackboardSizeX), int(blackboardSizeY));
   l2.setData(info2);
   desktop = Desktop.getDesktop();
+}
+
+void initFYHSistema(){
+Calendar c = Calendar.getInstance();
+    
+  int any = c.get(Calendar.YEAR);
+  int mes = c.get(Calendar.MONTH) + 1;
+  int dia = c.get(Calendar.DATE);
+  
+  println(dia+"/"+mes+"/"+any);
+  
+  int hora = c.get(Calendar.HOUR);
+  int minuts = c.get(Calendar.MINUTE);
+  
+  println(hora+":"+ minuts);
+
 }

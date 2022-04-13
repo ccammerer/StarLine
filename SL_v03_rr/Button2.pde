@@ -1,4 +1,3 @@
-
 class ImageButton {
   
  // Propietats d'un botó:

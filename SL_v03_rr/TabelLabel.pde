@@ -2,24 +2,31 @@ class TableLabel {
 
   int numRows;
   Label[] labels;
+  PImage foto;
 
   TableLabel(int nr) {
     this.numRows = nr;
     this.labels = new Label[nr];
-
-    
   }
 
 
-  void setLabelsInfo(String[][] info) {
+  /*void setLabelsInfo(String[][] info, PImage foto) {
+   this.foto = foto;
+   for (int i=0; i<info.length; i++) {
+   this.labels[i] = new Label(info[i][0], info[i][1], foto);
+   }
+   }*/
+
+  void setLabelsInfo(String[] info, String[] titols, PImage foto) {
+    this.foto = foto;
     for (int i=0; i<info.length; i++) {
-      this.labels[i] = new Label(info[i][0], info[i][1]);
+      this.labels[i] = new Label(titols[i], info[i], foto);
     }
   }
 
   void display(int x, int y, int w, int h) {
     pushStyle();
-    textMode(LEFT);
+    textAlign(LEFT);
     for (int i=0; i<labels.length; i++) {
       int px = x + ((i%2==0)? 0 : int(w/2 + margin/4));
       int py = y + (i/2)* int((h/6 + margin/4));
@@ -28,14 +35,16 @@ class TableLabel {
       } else {
         fill(p);
       }
-      labels[i].display(px, py, w/2, h/6);
+      //if (labels[i]!=null) {
+        labels[i].display(px, py, w/2, h/6);
+      //}
     }
     popStyle();
   }
 
   void display2(int x, int y, int w, int h) {
     pushStyle();
-    textMode(LEFT);
+    textAlign(LEFT);
     for (int i=0; i<labels.length; i++) {
       int px = x;
       int py = y + (i/2)* int((h/6 + margin/4));

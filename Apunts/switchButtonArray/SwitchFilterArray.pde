@@ -3,8 +3,8 @@ class SwitchFilterArray {
   SwitchFilter[] sfs;
   int x, y;
   int w, h;
-  int space = 50;
-  boolean initialValue = false;
+  int space = int(logoSize*0.875);
+  boolean initialValue = true;
   
   SwitchFilterArray(int x, int y, int w, int h){
     this.x = x;
@@ -21,6 +21,7 @@ class SwitchFilterArray {
       float x = this.x + i*(sfWidth+space);
       float y = this.y;
       sfs[i] = new SwitchFilter(info[i], x, y, sfWidth, this.h);
+      sfs[i].setImageF(aj[i],ajb[i]);
       sfs[i].setEnabled(initialValue);
     }
   }

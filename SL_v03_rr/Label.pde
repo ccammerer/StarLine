@@ -1,12 +1,13 @@
 class Label {
 
   String info1, info2;
-
+  PImage foto;
   float x, y, w, h;
 
-  Label(String info1, String info2) {
+  Label(String info1, String info2, PImage foto) {
     this.info1 = info1;
     this.info2 = info2;
+    this.foto = foto;
   }
 
   void setDimensions(float x, float y, float w, float h) {
@@ -21,11 +22,14 @@ class Label {
     pushStyle();
     rectMode(CORNER);
     rect(x, y, w, h, roundness);
+    image(foto, bigImgX, bigImgY+margin, bigImgSizeX, bigImgSizeX);
     fill(n);
     textSize(24);
-    textMode(CENTER);
+    textAlign(CENTER);
     text(this.info1, x + w/2, y + margin*0.7);
+    if(this.info2!=null){
     text(this.info2, x + w/2, y + margin*1.7);
+    }
     popStyle();
   }
 
@@ -35,7 +39,7 @@ class Label {
     rect(x, y, w, h, roundness);
     fill(n);
     textSize(24);
-    textMode(CENTER);
+    textAlign(CENTER);
     text(this.info1, x + w/2, y + margin*0.7);
     text(this.info2, x + w/2, y + margin*1.7);
     popStyle();

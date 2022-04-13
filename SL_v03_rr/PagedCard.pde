@@ -86,7 +86,9 @@ class PagedCard {
     int nc = 0;
     for (int i = firstCardPage; i <= lastCardPage; i++) {
       if (i<cards.length && cards[i]!=null) {
+        //println(i);
         cards[i].display(i==selectedCard);
+        
         nc++;
       }
     }

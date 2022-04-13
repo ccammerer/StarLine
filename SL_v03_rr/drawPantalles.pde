@@ -3,6 +3,7 @@ void drawPantallaUBI() {
   drawUbi();
   drawCont();
   configButt();
+  drawData();
 }
 
 void drawPantallaFYH() {
@@ -11,6 +12,7 @@ void drawPantallaFYH() {
   drawCont();
   drawBack();
   configButt();
+  drawData();
 }
 
 void drawPantallaHOME() {
@@ -20,6 +22,7 @@ void drawPantallaHOME() {
   drawBlackboards();
   drawBack();
   configButt();
+  drawData();
 }
 
 void drawPantallaINFO() {
@@ -29,10 +32,12 @@ void drawPantallaINFO() {
   drawObjectsBottom();
   drawBack();
   configButt();
+  drawData();
 }
 
 void drawPantallaCONFIG() {
   drawBanner();
   drawConfig();
   drawBack();
+  drawData();
 }

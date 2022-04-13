@@ -3,19 +3,43 @@ void keyPressed() {
   if (tList.textField.selected) {
     tList.textField.keyPressed(key, (int)keyCode);
     tList.update();
+    println("SI");
   }
-  
-  if(keyCode==LEFT && l.mouseOver()){
+  if (tListMini.textField.selected) {
+    tListMini.textField.keyPressed(key, (int)keyCode);
+    tListMini.update();
+    println("SI");
+  }
+   if (h.selected) {
+    h.keyPressed(key, (int)keyCode);
+    println(h.text);
+  }
+   if (m.selected) {
+    m.keyPressed(key, (int)keyCode);
+    println("SI");
+  }
+
+  if (keyCode==LEFT && l.mouseOver()) {
     l.prevPage();
-  }
-  else if(keyCode==RIGHT && l.mouseOver()){
+  } else if (keyCode==RIGHT && l.mouseOver()) {
     l.nextPage();
   }
-  if(keyCode==LEFT && l2.mouseOver()){
+  if (keyCode==LEFT && l2.mouseOver()) {
     l2.prevPage();
-  }
-  else if(keyCode==RIGHT && l2.mouseOver()){
+  } else if (keyCode==RIGHT && l2.mouseOver()) {
     l2.nextPage();
+  }
+
+  if (pantalla == PANTALLA.FYH) {
+    if (keyCode==LEFT) {
+      c.prevMonth();
+      println("PREV MONTH");
+    }
+    // Anar un mes endavant
+    else if (keyCode==RIGHT) {
+      c.nextMonth();
+      println("PREV MONTH");
+    }
   }
 }
 

@@ -23,9 +23,11 @@ class TextField {
   void display() {
     pushStyle();
     if (selected) {
+      fill(p);
       stroke(bo);
-    } else if (mouseText) {
-      stroke(goo);
+    } else if (mouseOverTextField()) {
+      fill(p);
+      stroke(go);
     } else {
       fill(p);
       stroke(n);
@@ -37,8 +39,15 @@ class TextField {
     textSize(textSize);
     textAlign(LEFT);
     text(text, x + margin/4, y + textSize + margin/12);
-    textCursor();
+    if (!selected && !mouseOverTextField()){
+    txt = 0;
+    }
+    //textCursor();
     popStyle();
+    
+    /*text1 = h.text;
+    //text2 = m.text;
+    println(text1);*/
   }
 
   // Afegeix, lleva el text que es tecleja
@@ -63,7 +72,7 @@ class TextField {
 
   // Afegeix la lletra c al final del text
   void addText(char c) {
-    if (textWidth(this.text + c) < w) {
+    if (textWidth(this.text + c) < 2*w) {
       this.text += c;
       textLength++;
       txt = txt + 23.3333;
@@ -99,19 +108,14 @@ class TextField {
     }
   }
 
-
-  void textCursor() {
+  /*void textCursor() {
     int m = millis();
-    if (mouseOverTextField()) {
-      mouseText = true;
-    } else {
-      mouseText = false;
-    }
+    
     if (selected && (m%2 == 0)) {
       pushStyle();
       stroke(n);
-      line(x + txt + margin/4, ubiActualY - ubiActualSizeY + margin/4, x + txt + margin/4, ubiActualY+ -margin/4);
+      line(x+5 +txt, y+5, x+5+txt, y+30);
       popStyle();
     }
-  }
+  }*/
 }

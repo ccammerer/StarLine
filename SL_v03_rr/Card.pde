@@ -5,6 +5,7 @@ class Card {
   String title, place, date;
   String section;
   String description;
+  int id;
 
   // Dimensions
   float x, y, w, h, b;
@@ -26,8 +27,7 @@ class Card {
     this.title = info[0];
     this.place = info[1];
     this.date = info[2];
-    this.section = info[3];
-    this.description = info[4];
+    this.id = Integer.valueOf(info[3]);
   }
 
   //Setters

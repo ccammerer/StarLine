@@ -5,21 +5,31 @@
 SwitchFilterArray sfa;
 
 // Dimensions de la zona de filtres
-int sfW = 700;
+int sfW = 400;
 int sfH = 100;
 
 // Dades dels filtres
-String[] info = {"Vegana", "Internacional", "Italiana"};
+String[] info = {"Sistema Solar", "Constelaciones", "Estrellas", "Satelites artificailes", "Cielo profundo"};
 
 // Color de fons de l'App
-color bgColor = color(255);
+
 
 void setup(){
   
-  size(800, 800); // Dimensions de la Pantalla
+  size(1600, 1100); // Dimensions de la Pantalla
   
   // Creació dels filtres de switch
-  sfa = new SwitchFilterArray(50, height/2 - sfH, sfW, sfH);
+  sfa = new SwitchFilterArray(int(objectsBottomX + 50), int(objectsBottomY), int(8*logoSize), int(logoSize));
+  
+ 
+  aj = new PImage[5]; 
+  ajb = new PImage[5];
+
+  for (int i = 0; i< aj.length; i++) {
+    aj[i] = loadImage("SS"+ i + ".png");
+    println("SS"+ i + ".png");
+    ajb[i] = loadImage("SSb"+ i + ".png");
+  }
   
   // Establim les etiquetes (noms) dels filtres
   sfa.setData(info);
@@ -29,19 +39,14 @@ void setup(){
 void draw(){
   
   // Fons de la finestra
-  background(bgColor);
+  background(g);
   
   // Dibuixa els botons
   sfa.display();
   
   // Actualitza forma del cursor
   updateCursor();
-  
-  // Visualitzam la informació dels filtres
-  fill(0); textSize(18); textAlign(LEFT);
-  text("Vegana: "+sfa.getSelectedValue("Vegana"), 100, 600);
-  text("Internacional: "+sfa.getSelectedValue("Internacional"), 100, 650);
-  text("Italiana: "+sfa.getSelectedValue("Italiana"), 100, 700);
+
 }
 
 // En cas de pitjar el ratolí

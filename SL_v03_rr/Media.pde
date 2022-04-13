@@ -13,6 +13,7 @@ PImage off;
 
 PFont banner;
 PFont general;
+PImage fondo;
 
 PImage config;
 PImage configg;
