@@ -141,7 +141,6 @@ void drawObjectListInfo() {
   nextMini.display(g, go);
   prevMini.display(p, po);
   tListMini.display();
-
   popStyle();
 }
 

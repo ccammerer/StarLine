@@ -177,7 +177,7 @@ ListLink l, l2;
 String[] ajustes2 = {"Música", "Utilizar ubicaión del sistema siempre", "Utilizar fecho y hora del sistema siempre"};
 
 int dia1, mes1, any1;
-Calendari c;
+Calendario c;
 String[][] datesClau = {{"2022-04-15", "Eclipse"}, {"2000-04-15", ""}};
 
 PImage[] aj, ajb;

@@ -46,45 +46,45 @@ void mousePressed() {
 
 
   //HOME
-   else if (pantalla == PANTALLA.HOME) {
-   pc.checkCardSelection();
-   if (selectedCard!=-1) {
-   id = pcMini.cards[selectedCard].id;
-   initLabels(id);
-   pantalla = PANTALLA.INFO;
-   }
-   
-   sfa.updateFilters();
-   if(sfa.getNumSelected()>0){
-   printArray(sfa.getSelectedValues());
-   updateCards(sfa.getSelectedValuesIn());
-   }
-   
-   if (bBACK.mouseOverButton()) {
-   pantalla = PANTALLA.FYH;
-   } else if (bBACK.mouseOverButton()) {
-   pantalla = PANTALLA.FYH;
-   }
-   if (next.mouseOverButton()) {
-   pc.nextPage();
-   }
-   if (prev.mouseOverButton()) {
-   pc.prevPage();
-   } else if (selected && mouseOverCards) {
-   pantalla = PANTALLA.INFO;
-   //selected = false;
-   // selectedCard= -1;
-   }
-   // Pitjam sobre el botó de TRIA
-   else if (search.mouseOverButton() && search.enabled) {
-   selectedText = tList.selectedValue;
-   }
-   
-   // Pitjam damunt el textList
-   tList.textField.isPressed();
-   tList.buttonPressed();
-   
-   }
+  else if (pantalla == PANTALLA.HOME) {
+
+    if (sfa.getNumSelected()>0) {
+      //printArray(sfa.getSelectedValues());
+      updateCards(sfa.getSelectedValuesIn());
+    }
+
+    if (bBACK.mouseOverButton()) {
+      pantalla = PANTALLA.FYH;
+    }
+    if (next.mouseOverButton()) {
+      pc.nextPage();
+    }
+    if (prev.mouseOverButton()) {
+      pc.prevPage();
+    } else {
+      pc.checkCardSelection();
+      if (pc.checkMouseOver()) {
+        id = pc.cards[selectedCard].id;
+        initLabels(id);
+      }
+    }
+    if (selected && mouseOverCards) {
+      pantalla = PANTALLA.INFO;
+    }
+    sfa.updateFilters();
+    if (sfa.updateCursor()) {
+      updateCards(sfa.getSelectedValuesIn());
+    }
+
+    // Pitjam sobre el botó de TRIA
+    else if (search.mouseOverButton() && search.enabled) {
+      selectedText = tList.selectedValue;
+    }
+
+    // Pitjam damunt el textList
+    tList.textField.isPressed();
+    tList.buttonPressed();
+  }
 
 
 
@@ -96,15 +96,16 @@ void mousePressed() {
     }
     if (nextMini.mouseOverButton()) {
       pcMini.nextPage();
+      println("NEXTmini: "+pcMini.numPage);
     }
     if (prevMini.mouseOverButton()) {
       pcMini.prevPage();
+      println("PREVmini: "+pcMini.numPage);
     } else {
       pcMini.checkCardSelection();
       //int n = selectedCard + 1;
       if (pcMini.checkMouseOver()) {
         id = pcMini.cards[selectedCard].id;
-        println("ID SELECTED CARD: "+id);
         initLabels(id);
       }
     }
